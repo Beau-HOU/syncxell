@@ -1,0 +1,96 @@
+{
+  "kind": "collectionType",
+  "collectionName": "rfq_submissions",
+  "info": {
+    "singularName": "rfq-submission",
+    "pluralName": "rfq-submissions",
+    "displayName": "RFQ Submission",
+    "description": "Demandes de devis et de proposition — lecture admin seulement"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "contact_first_name": {
+      "type": "string",
+      "required": true
+    },
+    "contact_last_name": {
+      "type": "string",
+      "required": true
+    },
+    "contact_email": {
+      "type": "email",
+      "required": true
+    },
+    "contact_phone": {
+      "type": "string"
+    },
+    "organization": {
+      "type": "string",
+      "required": true
+    },
+    "sector": {
+      "type": "enumeration",
+      "enum": ["federal", "local_gov", "banking", "legal", "other"],
+      "required": true
+    },
+    "services_requested": {
+      "type": "json"
+    },
+    "project_description": {
+      "type": "text",
+      "required": true
+    },
+    "federal_agency": {
+      "type": "string"
+    },
+    "solicitation_number": {
+      "type": "string"
+    },
+    "set_aside_type": {
+      "type": "enumeration",
+      "enum": ["sba_8a", "hubzone", "sdvosb", "wosb", "small_business", "none"]
+    },
+    "municipality_name": {
+      "type": "string"
+    },
+    "it_budget_range": {
+      "type": "enumeration",
+      "enum": ["under_50k", "tier_50k_250k", "tier_250k_1m", "tier_1m_5m", "over_5m"]
+    },
+    "desired_timeline": {
+      "type": "enumeration",
+      "enum": ["immediate", "months_3", "months_6", "year_1", "exploratory"]
+    },
+    "compliance_needs": {
+      "type": "json"
+    },
+    "rfp_documents": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": ["files"]
+    },
+    "how_did_you_hear": {
+      "type": "enumeration",
+      "enum": ["sam_gov", "linkedin", "referral", "search", "other"]
+    },
+    "consent_to_contact": {
+      "type": "boolean",
+      "required": true,
+      "default": false
+    },
+    "submission_ip": {
+      "type": "string"
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": ["new", "in_review", "contacted", "closed"],
+      "default": "new"
+    },
+    "internal_notes": {
+      "type": "text"
+    }
+  }
+}

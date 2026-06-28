@@ -1,0 +1,25 @@
+# Dependencies
+node_modules/
+**/node_modules/
+
+# Strapi
+syncxell-backend/.tmp/
+syncxell-backend/.cache/
+syncxell-backend/dist/
+syncxell-backend/build/
+syncxell-backend/.strapi/
+syncxell-backend/exports/
+
+# Environment
+.env
+**/.env
+.env.local
+.env.*.local
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS
+.DS_Store
+Thumbs.db

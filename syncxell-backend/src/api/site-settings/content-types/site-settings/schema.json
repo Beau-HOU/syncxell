@@ -1,0 +1,62 @@
+{
+  "kind": "singleType",
+  "collectionName": "site_settings",
+  "info": {
+    "singularName": "site-settings",
+    "pluralName": "site-settings-list",
+    "displayName": "Site Settings",
+    "description": "Paramètres globaux du site (navigation, footer, emails de notification)"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "site_title": {
+      "type": "string",
+      "required": true,
+      "pluginOptions": { "i18n": { "localized": true } }
+    },
+    "site_description": {
+      "type": "text",
+      "required": true,
+      "pluginOptions": { "i18n": { "localized": true } }
+    },
+    "maintenance_mode": {
+      "type": "boolean",
+      "default": false
+    },
+    "rfq_email_recipient": {
+      "type": "email",
+      "required": true
+    },
+    "teaming_email_recipient": {
+      "type": "email",
+      "required": true
+    },
+    "nav_links": {
+      "type": "json",
+      "pluginOptions": { "i18n": { "localized": true } }
+    },
+    "footer_links": {
+      "type": "json",
+      "pluginOptions": { "i18n": { "localized": true } }
+    },
+    "social_proof_stats": {
+      "type": "json",
+      "pluginOptions": { "i18n": { "localized": true } }
+    },
+    "cookie_banner_text": {
+      "type": "text",
+      "pluginOptions": { "i18n": { "localized": true } }
+    },
+    "cookie_banner_enabled": {
+      "type": "boolean",
+      "default": true
+    }
+  }
+}

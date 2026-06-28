@@ -1,0 +1,96 @@
+{
+  "kind": "collectionType",
+  "collectionName": "teaming_requests",
+  "info": {
+    "singularName": "teaming-request",
+    "pluralName": "teaming-requests",
+    "displayName": "Teaming Request",
+    "description": "Demandes de teaming/sous-traitance des prime contractors — lecture admin seulement"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "company_name": {
+      "type": "string",
+      "required": true
+    },
+    "contact_name": {
+      "type": "string",
+      "required": true
+    },
+    "contact_email": {
+      "type": "email",
+      "required": true
+    },
+    "contact_phone": {
+      "type": "string"
+    },
+    "company_website": {
+      "type": "string"
+    },
+    "cage_code": {
+      "type": "string"
+    },
+    "uei": {
+      "type": "string"
+    },
+    "opportunity_name": {
+      "type": "string",
+      "required": true
+    },
+    "solicitation_number": {
+      "type": "string"
+    },
+    "issuing_agency": {
+      "type": "string"
+    },
+    "submission_deadline": {
+      "type": "date"
+    },
+    "services_needed_from_syncxell": {
+      "type": "json"
+    },
+    "estimated_subcontract_value": {
+      "type": "enumeration",
+      "enum": ["under_100k", "tier_100k_500k", "tier_500k_1m", "over_1m", "unknown"]
+    },
+    "nda_document": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["files"]
+    },
+    "teaming_agreement_draft": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["files"]
+    },
+    "additional_documents": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": ["files"]
+    },
+    "message": {
+      "type": "text"
+    },
+    "consent_to_contact": {
+      "type": "boolean",
+      "required": true,
+      "default": false
+    },
+    "submission_ip": {
+      "type": "string"
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": ["new", "reviewing", "under_nda", "active", "declined"],
+      "default": "new"
+    },
+    "internal_notes": {
+      "type": "text"
+    }
+  }
+}

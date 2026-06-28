@@ -1,0 +1,46 @@
+{
+  "kind": "collectionType",
+  "collectionName": "faqs",
+  "info": {
+    "singularName": "faq",
+    "pluralName": "faqs",
+    "displayName": "FAQ",
+    "description": "Questions fréquentes par secteur"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "question": {
+      "type": "string",
+      "required": true,
+      "pluginOptions": { "i18n": { "localized": true } }
+    },
+    "answer": {
+      "type": "richtext",
+      "required": true,
+      "pluginOptions": { "i18n": { "localized": true } }
+    },
+    "category": {
+      "type": "enumeration",
+      "enum": ["general", "procurement", "security", "services", "billing"]
+    },
+    "target_sector": {
+      "type": "enumeration",
+      "enum": ["federal", "local_gov", "banking", "legal", "all"]
+    },
+    "display_order": {
+      "type": "integer",
+      "default": 99
+    },
+    "is_featured": {
+      "type": "boolean",
+      "default": false
+    }
+  }
+}

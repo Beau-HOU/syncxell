@@ -1,0 +1,50 @@
+{
+  "kind": "collectionType",
+  "collectionName": "partners",
+  "info": {
+    "singularName": "partner",
+    "pluralName": "partners",
+    "displayName": "Partner",
+    "description": "Partenaires technologiques et logos clients"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "logo": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": ["images"]
+    },
+    "website_url": {
+      "type": "string"
+    },
+    "partner_type": {
+      "type": "enumeration",
+      "enum": ["technology", "teaming", "client", "certification_body"],
+      "required": true
+    },
+    "description": {
+      "type": "text",
+      "pluginOptions": { "i18n": { "localized": true } }
+    },
+    "display_order": {
+      "type": "integer",
+      "default": 99
+    },
+    "is_featured": {
+      "type": "boolean",
+      "default": false
+    }
+  }
+}

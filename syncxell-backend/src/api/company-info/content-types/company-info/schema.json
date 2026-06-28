@@ -1,0 +1,115 @@
+{
+  "kind": "singleType",
+  "collectionName": "company_infos",
+  "info": {
+    "singularName": "company-info",
+    "pluralName": "company-infos",
+    "displayName": "Company Info",
+    "description": "Informations institutionnelles SYNCXELL + portail gouvernemental (CAGE, UEI, NAICS, Capability Statement)"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "company_name": {
+      "type": "string",
+      "required": true
+    },
+    "tagline": {
+      "type": "string",
+      "required": true,
+      "pluginOptions": { "i18n": { "localized": true } }
+    },
+    "mission_statement": {
+      "type": "richtext",
+      "required": true,
+      "pluginOptions": { "i18n": { "localized": true } }
+    },
+    "founded_year": {
+      "type": "integer"
+    },
+    "headquarters_address": {
+      "type": "text"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "general_email": {
+      "type": "email"
+    },
+    "linkedin_url": {
+      "type": "string"
+    },
+    "twitter_url": {
+      "type": "string"
+    },
+    "cage_code": {
+      "type": "string",
+      "required": true
+    },
+    "uei": {
+      "type": "string",
+      "required": true
+    },
+    "primary_naics": {
+      "type": "string",
+      "required": true
+    },
+    "naics_codes": {
+      "type": "json",
+      "required": true
+    },
+    "duns_number": {
+      "type": "string"
+    },
+    "business_size": {
+      "type": "enumeration",
+      "enum": ["small", "other_than_small"]
+    },
+    "socioeconomic_designations": {
+      "type": "json"
+    },
+    "capability_statement_pdf": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": ["files"]
+    },
+    "company_overview_video": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["videos"]
+    },
+    "logo": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": ["images"]
+    },
+    "logo_white": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["images"]
+    },
+    "favicon": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["images"]
+    },
+    "google_analytics_id": {
+      "type": "string"
+    },
+    "footer_disclaimer": {
+      "type": "text",
+      "pluginOptions": { "i18n": { "localized": true } }
+    }
+  }
+}

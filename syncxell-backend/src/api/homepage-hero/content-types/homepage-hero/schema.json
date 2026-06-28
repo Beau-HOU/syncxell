@@ -1,0 +1,74 @@
+{
+  "kind": "singleType",
+  "collectionName": "homepage_heroes",
+  "info": {
+    "singularName": "homepage-hero",
+    "pluralName": "homepage-heroes",
+    "displayName": "Homepage Hero",
+    "description": "Section hero de la page d'accueil"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "headline": {
+      "type": "string",
+      "required": true,
+      "pluginOptions": { "i18n": { "localized": true } }
+    },
+    "subheadline": {
+      "type": "text",
+      "required": true,
+      "pluginOptions": { "i18n": { "localized": true } }
+    },
+    "cta_primary_label": {
+      "type": "string",
+      "required": true,
+      "pluginOptions": { "i18n": { "localized": true } }
+    },
+    "cta_primary_url": {
+      "type": "string",
+      "required": true
+    },
+    "cta_secondary_label": {
+      "type": "string",
+      "pluginOptions": { "i18n": { "localized": true } }
+    },
+    "cta_secondary_url": {
+      "type": "string"
+    },
+    "hero_image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["images"]
+    },
+    "hero_image_mobile": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["images"]
+    },
+    "trust_badges": {
+      "type": "json",
+      "pluginOptions": { "i18n": { "localized": true } }
+    },
+    "stats": {
+      "type": "json",
+      "pluginOptions": { "i18n": { "localized": true } }
+    },
+    "announcement_bar_text": {
+      "type": "string",
+      "pluginOptions": { "i18n": { "localized": true } }
+    },
+    "announcement_bar_enabled": {
+      "type": "boolean",
+      "default": false
+    }
+  }
+}

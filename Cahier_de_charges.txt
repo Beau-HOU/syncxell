@@ -1,0 +1,327 @@
+SYNCXELL
+LLC
+Website
+Requirements
+& Technical
+Specifications
+(Cahier des
+Charges)
+"Where
+integrity
+meets
+innovation"
+Document Type:
+Full-Spectrum Architectural
+Blueprint
+Target Entities:
+US Federal/Local Gov,
+Banking, Law Firms
+Classification:
+Enterprise IT Procurement
+& Web Strategy
+Date:
+June 2026
+SYNCXELL LLC | Proprietary & Confidential Page 1
+1. Executive Summary & Company
+Profile
+1.1 Company Description
+SYNCXELL LLC is a full-spectrum IT solutions provider specializing in delivering secure,
+scalable, and mission-critical technology services to the US Government and large enterprises.
+With a foundation built on a diverse and highly-skilled team, our expertise spans the entire
+technology stack, from application development and cloud infrastructure to robust cybersecurity
+and data analytics.
+Our professionals bring firsthand experience from high-stakes environments, including prior
+work for the US and French governments, major airlines, and leading technology companies.
+This unique background gives us a deep understanding of complex operational needs, strict
+compliance requirements, and the necessity for uninterrupted, high-performance systems.
+We are committed to leveraging this expertise to help our clients modernize their IT
+environments, enhance operational efficiency, and secure their digital assets in today's evolving
+threat landscape.
+1.2 Document Purpose
+This Cahier des Charges serves as the definitive structural and functional blueprint for the
+engineering of the SYNCXELL LLC corporate digital platform. The objective is to build a highperformance web application that captures high-value contracts from federal and municipal
+governments, as well as highly regulated private sectors (banking, legal). It outlines the
+architecture, UX/UI requirements, service representations, and robust security protocols
+necessary to reflect the elite technological pedigree of the company.
+SYNCXELL LLC | Proprietary & Confidential Page 2
+2. Target Audiences & Personas
+2.1 The US Federal Government & Military
+This audience demands absolute clarity regarding procurement eligibility, past performance, and
+strict adherence to federal standards. The website must cater directly to Contracting Officers
+(COs) and Technical Evaluators. Required web elements include immediate visibility of NAICS
+codes, UEI, CAGE codes, and downloadable Capability Statements (PDF). Security compliance
+(NIST, FISMA, CMMC) must be highly visible.
+2.2 Local Governments & Municipalities
+Cities and counties are focused on modernizing legacy infrastructures under tight budget
+constraints. The platform must demonstrate our ability to provide reliable IT operations, Service
+Desk support, and cost-effective digital transformation. The messaging here should focus on
+community impact, system stabilization, and responsive local government services.
+2.3 Banks & Financial Institutions
+For the financial sector, the platform must exude ironclad security and zero-trust engineering.
+Financial CIOs are looking for hybrid cloud solutions, secure data warehousing, predictive
+analytics for fraud detection, and disaster recovery. The website must detail our AES-256
+encryption standards, data isolation techniques, and regulatory compliance mapping.
+2.4 Law Firms & Private Enterprise
+Corporate legal entities require ultra-secure document management systems, bespoke software
+application development, and resilient network architectures. The messaging for this persona
+emphasizes absolute data confidentiality, high-availability networks for constant global access,
+and agile development pipelines to modernize their internal operations.
+SYNCXELL LLC | Proprietary & Confidential Page 3
+3. Core Service 1: Software &
+Application Development
+The platform must feature a dedicated, technically rich hub detailing our software engineering
+capabilities. This section will demonstrate our ability to build, refactor, and deploy mission-critical
+software.
+3.1 Custom Application Development
+The website must outline our methodology for creating bespoke, enterprise-grade applications. It
+should highlight our use of modern front-end and back-end frameworks, microservices
+architecture, and secure API integrations. Content must emphasize scalable cloud-native
+architectures that can handle high-throughput government and banking transactions.
+3.2 Legacy System Modernization
+Many target clients operate on outdated mainframes or legacy codebases. The platform will
+detail our systemic approach to technical debt reduction. This includes strategies for monolithic
+decoupling, zero-downtime database migrations, and modernizing user interfaces without
+disrupting historical operational data.
+3.3 DevOps & CI/CD Implementation
+To assure CIOs of our delivery speed and reliability, the site will feature our DevOps pipelines. It
+must explain our implementation of Continuous Integration and Continuous Deployment (CI/CD)
+methodologies, automated testing protocols, containerization (Docker/Kubernetes), and
+immutable deployment strategies. This demonstrates that SYNCXELL ships secure code rapidly
+and reliably.
+SYNCXELL LLC | Proprietary & Confidential Page 4
+4. Core Service 2: Cloud Infrastructure
+& Management
+As organizations pivot to the cloud, SYNCXELL's capabilities in multi-cloud orchestration must
+be front and center. This section of the website requires deep technical detail rather than highlevel marketing fluff.
+4.1 Cloud Architecture & Migration (AWS & Azurefocused)
+The site must highlight our deep expertise in constructing resilient architectures across both
+Amazon Web Services (AWS) and Microsoft Azure. We need to detail our processes for cloud
+readiness assessments, Landing Zone configurations, Entra ID (Azure AD) identity governance,
+AWS IAM policy enforcement, and seamless workload migrations. Content must explicitly state
+our proficiency in implementing secure Azure Government and AWS GovCloud environments
+tailored for federal contracts.
+4.2 Cloud Infrastructure Management
+Once workloads are in the cloud, they must be maintained. The platform will outline our multicloud and hybrid-cloud management capabilities. This includes cross-cloud resource
+optimization, continuous cost-monitoring, automated scaling policies, and maintaining high
+availability across geographic availability zones within AWS and Azure fabrics.
+4.3 Hybrid Cloud Solutions
+Understanding that banking and defense sectors often cannot move 100% of their data to the
+public cloud, the website must emphasize our Hybrid Cloud architectures. Content should
+describe secure VPN tunneling, federated networks, and localized data centers synchronized
+seamlessly with Azure public endpoints and AWS Virtual Private Clouds (VPCs).
+SYNCXELL LLC | Proprietary & Confidential Page 5
+5. Core Service 3: Cybersecurity &
+Compliance
+Security is the bedrock of SYNCXELL. This section of the platform must be highly detailed,
+serving as a technical assurance portal for visiting Chief Information Security Officers (CISOs).
+5.1 Security Assessment & Risk Management
+The website will feature our proactive security methodologies. This includes detailing our
+penetration testing services, vulnerability scanning protocols, and comprehensive risk profiling.
+The interface should allow potential clients to request a preliminary security audit directly
+through an encrypted portal.
+5.2 Compliance Services (NIST, FISMA, CMMC)
+This is a critical conversion page for federal contracts. The website must display dedicated
+matrices showing our alignment and consultation capabilities for:
+NIST: Implementation of SP 800-53 controls and SP 800-171 protections for Controlled
+Unclassified Information (CUI).
+FISMA: Achieving High and Medium impact system authorizations.
+CMMC: Preparing defense contractors for Cybersecurity Maturity Model Certification.
+5.3 Managed Security Services
+Detailing our 24/7/365 active defense posture. The content should cover our Security
+Information and Event Management (SIEM) tuning, Threat Hunting, automated Incident
+Response playbooks, and continuous endpoint monitoring.
+•
+•
+•
+SYNCXELL LLC | Proprietary & Confidential Page 6
+6. Core Service 4: Network &
+Operations
+The backbone of any enterprise is its network. The website must project total competence in
+designing and operating highly resilient communication fabrics.
+6.1 Network Design & Management
+Content must cover the architecture of Software-Defined Networking (SDN), Zero Trust Network
+Access (ZTNA), and secure multi-site configurations. We will detail our ability to segment
+networks dynamically to prevent lateral movement of threats across corporate or municipal
+environments.
+6.2 System Administration & Monitoring
+The platform must highlight our advanced system telemetry. Specifically, the copy will detail our
+deployment of highly centralized monitoring architectures to aggregate logs and system health
+metrics across highly complex, globally distributed networks in real time.
+6.3 IT Operations & Service Desk
+For municipal and enterprise clients needing day-to-day operational support, this page will
+outline our ITIL-aligned service delivery. It must describe our tiered escalation models, SLA
+guarantees, and mission-critical support structures designed to keep workforces productive.
+SYNCXELL LLC | Proprietary & Confidential Page 7
+7. Advanced Virtualization &
+Hypervisor Operations
+The website will dedicate technical space to our capabilities in managing massive virtual
+estates, detailing our deep architectural knowledge across enterprise hypervisors.
+7.1 Enterprise Virtualization & Migrations
+The copy will explain our agility in designing, maintaining, and transforming complex virtualized
+networks. Crucially, the site will highlight our profound expertise in executing seamless, zerodowntime infrastructure migrations from legacy VMware environments to high-performance,
+cost-effective open-source hypervisors.
+7.2 XCP-ng & KVM Mastery
+The platform must explicitly document our operational mastery of XCP-ng and KVM (Kernelbased Virtual Machine) infrastructures. This section will demonstrate to municipal and federal
+CIOs how we build incredibly robust, scalable compute clusters without the heavy licensing
+burdens of traditional proprietary hypervisors, ensuring total control, data sovereignty, and
+uncompromised performance.
+SYNCXELL LLC | Proprietary & Confidential Page 8
+8. Core Service 5: Data Services &
+Analytics
+In the modern IT landscape, data is a strategic asset. The website must detail how SYNCXELL
+processes, secures, and extracts value from massive datasets.
+8.1 Business Intelligence & Reporting
+The site will showcase our ability to build intuitive, secure executive dashboards. Content should
+describe how we ingest complex database outputs and translate them into real-time visual
+insights for government leaders, bank executives, and managing partners.
+8.2 Data Warehouse & ETL Solutions
+Detailing the deep engineering behind our data services. The text must cover the architecture of
+highly secure Data Warehouses and the implementation of robust Extract, Transform, Load
+(ETL) pipelines. We must emphasize data sanitization, metadata management, and AES-256
+encryption for data at rest and in transit.
+8.3 Predictive Analytics
+The platform will highlight our advanced analytics and modeling capabilities. This includes
+leveraging machine learning frameworks to build predictive models for equipment failure,
+financial fraud detection, and operational forecasting, offering clients a proactive approach to
+management.
+SYNCXELL LLC | Proprietary & Confidential Page 9
+9. Specialized IT Automation &
+Orchestration
+To appeal to high-end engineering procurement leads, the website requires a dedicated section
+on Infrastructure as Code (IaC) and configuration management. This establishes SYNCXELL as
+a modern, forward-thinking engineering firm.
+9.1 Declarative Cloud Provisioning
+The platform will detail our expertise in using tools like Terraform to build repeatable, immutable
+infrastructure. Content should cover state file management, module isolation, and automated
+environment provisioning across AWS, Azure, and hybrid spaces to eliminate configuration drift.
+9.2 Advanced Configuration Management
+The website must showcase our structured automation frameworks. We will explicitly detail our
+enterprise architecture for configuration enforcement across bare-metal servers, AWS EC2
+instances, and XCP-ng virtual machines, ensuring absolute consistency and security patching
+across massive distributed fleets.
+SYNCXELL LLC | Proprietary & Confidential Page 10
+10. Enterprise OS Engineering
+Given the reliance of the US government and banking sectors on secure foundations, the
+website must feature a robust module on our deep OS-level expertise.
+10.1 Hardened OS Deployments
+Detailing our mastery of enterprise operating systems, which serve as the standard for federal
+operations. Content must cover kernel tuning, SELinux enforcement, and centralized patching,
+proving our ability to secure environments at the operating system layer against complex
+persistent threats.
+10.2 Agile Infrastructure Deployments
+The platform will also highlight our agility in configuring optimized OS environments tailored for
+modern containerized microservices, Kubernetes clusters, and web application hosting, ensuring
+clients are prepared for next-generation software demands.
+SYNCXELL LLC | Proprietary & Confidential Page 11
+11. Government Procurement Portal
+(Gov Hub)
+A vital architectural requirement of the website is a distinct, easily navigable portal designed
+exclusively for government contracting officers to streamline their market research.
+11.1 Administrative Procurement Matrix
+The portal must feature a high-contrast, front-facing table that immediately delivers SYNCXELL's
+vital statistics: CAGE Code, Unique Entity ID (UEI), and a comprehensive breakdown of our
+primary NAICS Codes. This prevents COs from having to hunt for compliance data.
+11.2 Capability Statement Engine
+The site must include an un-gated, highly visible download mechanism for the official
+SYNCXELL Capability Statement (PDF format). The underlying CMS must allow site
+administrators to easily swap out this PDF as past performances are updated.
+11.3 Secure Subcontracting & Teaming Intake
+An encrypted web form specifically designed for Prime Contractors looking to team with
+SYNCXELL on large federal bids, allowing them to upload NDAs and Teaming Agreements
+securely.
+SYNCXELL LLC | Proprietary & Confidential Page 12
+12. Bilingual Architecture &
+Internationalization
+Reflecting the unique background of our engineering professionals and previous work with
+French government entities, the website must support deep internationalization (i18n).
+12.1 English & French Localization
+The platform must be built with a native language toggle, allowing the entire site interface,
+service descriptions, and contact forms to switch seamlessly between English and French. This
+requires a structured CMS framework where dedicated, culturally accurate French copy can be
+manually uploaded to match the English technical specifications.
+12.2 Geolocation Routing
+The web server should detect the incoming IP locale and automatically suggest the appropriate
+language layout, ensuring a frictionless user experience for international partners.
+SYNCXELL LLC | Proprietary & Confidential Page 13
+13. Encrypted Lead Capture & RFQ
+Gateway
+The "Contact Us" functionality must be elevated to an enterprise-grade Request for Quote
+(RFQ) and proposal ingestion engine.
+13.1 Dynamic RFQ Workflows
+The contact form will utilize conditional logic based on the user's selected sector:
+Federal: Prompts for Agency, Solicitation Number, and Set-Aside requirements.
+Local Gov: Prompts for Municipality Name, IT Budget constraints, and desired timelines.
+Corporate/Legal: Prompts for specific software or compliance consulting needs.
+13.2 Secure File Vault Uploads
+Potential clients must be able to upload highly sensitive RFP documents, network topology
+maps, or RFQ specs. This upload portal must utilize client-side virus scanning, strict MIME-type
+validation, and AES-256 encryption upon transit to a secure AWS/Azure storage bucket.
+•
+•
+•
+SYNCXELL LLC | Proprietary & Confidential Page 14
+14. Web Platform Security &
+Compliance Mandates
+The corporate website of a cybersecurity and IT solutions provider must itself be an
+impenetrable fortress, serving as a live demonstration of SYNCXELL's capabilities.
+14.1 Infrastructure Security
+The hosting environment must enforce HTTP Strict Transport Security (HSTS), permitting only
+TLS 1.3 connections. A robust Web Application Firewall (WAF) must be deployed to
+automatically filter out DDoS attempts, SQL injection, and Cross-Site Scripting (XSS) attacks.
+14.2 Section 508 Accessibility Compliance
+Because the target audience includes US Federal agencies, the website's front-end must strictly
+adhere to WCAG 2.1 AA and Section 508 guidelines. This entails perfect color contrast ratios,
+comprehensive ARIA labeling for screen readers, complete keyboard navigability, and dynamic
+text scaling.
+SYNCXELL LLC | Proprietary & Confidential Page 15
+15. Visual Identity & UI/UX Design
+System
+The design language must communicate elite competence, government-grade authority, and
+technological innovation.
+15.1 Corporate Color Palette
+Primary Dark Slate Blue (#1a2b4c): The anchor color for headers, navigation, and primary
+branding. It evokes deep institutional trust and stability.
+Accent Gold (#c5a059): Used for call-to-action buttons, active states, and highlighting key
+differentiators. It signifies prestige and high-quality engineering.
+Clean Slate Whites & Grays: Extensive use of whitespace to ensure technical density does
+not overwhelm the user.
+15.2 Typography
+To bridge the gap between historical institutional authority and modern tech, the design will
+employ a structured serif font (e.g., Georgia) for major headings, paired with a highly legible,
+modern sans-serif font (e.g., Helvetica/Arial) for body text and technical tables.
+•
+•
+•
+SYNCXELL LLC | Proprietary & Confidential Page 16
+16. Recommended Technical Stack for
+the Platform
+To deliver on the performance, security, and scalability requirements outlined in this document,
+the following technology stack is mandated for the development of the SYNCXELL website.
+16.1 Front-End Architecture
+A modern JavaScript framework such as Next.js (React) or Nuxt.js (Vue) is required. These
+frameworks provide Server-Side Rendering (SSR) or Static Site Generation (SSG), resulting in
+lightning-fast page load times, superior SEO indexing (vital for procurement searches), and a
+highly secure front-end separated from the database layer.
+16.2 Headless CMS Backend
+A Headless Content Management System (such as Sanity, Strapi, or Contentful) should be
+utilized. This allows the SYNCXELL marketing team to update services, publish case studies,
+and manage the bilingual (English/French) content easily, without exposing a traditional backend
+(like WordPress) to massive vulnerability scanning.
+SYNCXELL LLC | Proprietary & Confidential Page 17
+17. Quality Assurance & Launch
+Criteria
+Before the SYNCXELL corporate platform is transitioned to a live production environment, it
+must pass a rigorous matrix of validation gates.
+17.1 Security Penetration Testing
+A third-party or isolated internal team must conduct dynamic application security testing (DAST)
+and static code analysis (SAST) to ensure the encrypted intake forms and CMS APIs are fully
+hardened against exploitation.
+17.2 Performance Profiling
+The platform must achieve a Google Lighthouse score of 95+ across Performance, Accessibility,
+Best Practices, and SEO. Page Time-to-Interactive (TTI) must be under 1.5 seconds on
+broadband connections.
+17.3 Final Handover
+Upon successful QA, the development team will provide comprehensive documentation covering
+the deployment pipeline, CMS operational guidelines, and WAF configuration states to the
+SYNCXELL executive board.
+SYNCXELL LLC | Proprietary & Confidential Page 18
