@@ -1,5 +1,8 @@
 Options +FollowSymlinks
 AddDefaultCharset UTF-8
+
+ErrorDocument 404 /public/error.php
+
 RewriteEngine On
 
 # HTTPS redirect — décommenter en production

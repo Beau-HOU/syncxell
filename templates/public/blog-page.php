@@ -1,105 +1,187 @@
-<?php include view('public/layout/header'); ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<?php include view('layout/head'); ?>
+</head>
+<body class="blog-page">
 
-<!-- ══ HERO BLOG ══ -->
-<section class="page-inner" style="background-image:url('<?= asset('img/Gocast/webp/dlxmedia-hu-lsSpTX8QL_M-unsplash.webp') ?>')">
-  <div class="pi-overlay"></div>
-  <div class="pi-content">
-    <div class="pi-breadcrumb">
-      <a href="<?= m_path('home', [], true) ?>">Accueil</a>
-      <span>/</span>
-      <span>Blog</span>
-    </div>
-    <h1 class="pi-h1">Le Blog GoCast</h1>
-    <p class="pi-sub">Conseils, ressources et actualités pour les créateurs de contenu</p>
+<?php include view('layout/header'); ?>
+</div><!--/.min-box-->
+
+<!-- ── PAGE TITLE ── -->
+<div class="prt-page-title-row" style="background-image:url('<?= asset('images/top_bar1.png') ?>');background-size:cover;background-position:center top;">
+  <div class="prt-col-wrapper-bg-layer prt-bg-layer">
+    <div class="prt-col-wrapper-bg-layer-inner"></div>
   </div>
-</section>
-
-<!-- ══ FILTRES CATÉGORIES ══ -->
-<?php if (!empty($categories)): ?>
-<section style="background:var(--gc-dark);padding:40px 0;border-bottom:1px solid rgba(255,255,255,.06)">
-  <div class="container">
-    <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center">
-      <button class="blog-cat-btn on" data-cat="all" onclick="filterBlog(this)">Tous les articles</button>
-      <?php foreach ($categories as $cat): ?>
-      <button class="blog-cat-btn" data-cat="<?= $cat['id'] ?>" onclick="filterBlog(this)"><?= htmlspecialchars($cat['name']) ?></button>
-      <?php endforeach; ?>
+  <div class="layer-content">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="title-box">
+            <div class="breadcrumb-wrapper mb-20">
+              <span><a title="Home" href="<?= m_path('home', [], true) ?>">Home</a></span>
+              <span class="prt-bread-sep"><i class="fa-angle-double-right fa"></i></span>
+              <span>Tech Insights</span>
+            </div>
+            <div class="page-title-heading">
+              <h1 class="pb-0">Tech Insights &amp; News</h1>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-</section>
-<?php endif; ?>
+</div>
 
-<!-- ══ GRILLE ARTICLES ══ -->
-<section style="background:var(--gc-dark);padding:80px 0 120px">
-  <div class="container">
-    <?php if (!empty($blogs)): ?>
-    <div id="blog-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:28px">
-      <?php foreach ($blogs as $article):
-        $cover = $article['cover']
-          ? asset($article['cover'])
-          : asset('img/Gocast/webp/dlxmedia-hu-JJFfe2qRqhE-unsplash.webp');
-        $catId = $article['category_id'] ?? 0;
-        $catName = htmlspecialchars($article['category_name'] ?? 'Article');
-        $date = $article['published_at']
-          ? date('d M Y', strtotime($article['published_at']))
-          : '';
-      ?>
-      <article class="blog-card" data-cat="<?= $catId ?>">
-        <a href="<?= m_path('blog.detail', [$article['slug']], true) ?>" style="text-decoration:none;color:inherit">
-          <div class="blog-card-img">
-            <img src="<?= $cover ?>" alt="<?= htmlspecialchars($article['title']) ?>">
-            <?php if ($catName): ?>
-            <div class="blog-card-tag"><?= $catName ?></div>
+<div class="site-main">
+  <div class="sidebar prt-sidebar-right clearfix">
+    <div class="container">
+      <div class="row">
+
+        <!-- ── ARTICLES (col-8) ── -->
+        <div class="col-lg-8 col-md-12 m-auto mt-0 content-area">
+          <div class="post prt-blog-classic-inner">
+            <?php if (!empty($posts)): ?>
+              <?php foreach ($posts as $p):
+                $cover = strapi_img($p['cover_image'] ?? null);
+                $categoryLabel = ucwords(str_replace('_', ' ', $p['category'] ?? ''));
+              ?>
+              <article class="post prt-blog-classic">
+                <div class="featured-imagebox featured-imagebox-post style4">
+                  <div class="featured-thumbnail">
+                    <a href="<?= m_path('blog.detail', [$p['slug']], true) ?>">
+                      <img class="img-fluid" src="<?= $cover ?: asset('images/placeholder-blog.svg') ?>" alt="<?= htmlspecialchars($p['title']) ?>" width="767" height="657">
+                    </a>
+                  </div>
+                  <div class="featured-content featured-content-post">
+                    <?php if ($categoryLabel): ?>
+                    <div class="post-meta">
+                      <span class="prt-meta-line category">
+                        <a href="<?= m_path('blog', [], true) ?>"><?= htmlspecialchars($categoryLabel) ?></a>
+                      </span>
+                    </div>
+                    <?php endif; ?>
+                    <div class="featured-title">
+                      <h3><a href="<?= m_path('blog.detail', [$p['slug']], true) ?>"><?= htmlspecialchars($p['title']) ?></a></h3>
+                    </div>
+                    <div class="prt-postbox-btn">
+                      <a class="prt-btn prt-btn-size-sm btn-inline prt-icon-btn-right" href="<?= m_path('blog.detail', [$p['slug']], true) ?>">More details</a>
+                    </div>
+                  </div>
+                </div>
+              </article>
+              <?php endforeach; ?>
+              <div class="row">
+                <div class="col-md-12 m-auto">
+                  <div class="pagination-block text-center prt-pagination">
+                    <span class="page-numbers current">1</span>
+                  </div>
+                </div>
+              </div>
+            <?php else: ?>
+              <div class="text-center" style="padding:60px 0;">
+                <p class="m-0">No articles published yet — check back soon.</p>
+              </div>
             <?php endif; ?>
           </div>
-          <div class="blog-card-body">
-            <?php if ($date): ?>
-            <div class="blog-card-date"><?= $date ?></div>
+        </div>
+        <!-- articles end -->
+
+        <!-- ── SIDEBAR (col-4) ── -->
+        <div class="col-lg-4 col-md-12 m-auto mt-0 widget-area sidebar-right pl-15 pr-15">
+          <div class="prt-bg prt-col-bgcolor-yes bg-base-grey prt-bg prt-right-span spacing-5 h-100">
+            <div class="prt-col-wrapper-bg-layer prt-bg-layer">
+              <div class="prt-col-wrapper-bg-layer-inner"></div>
+            </div>
+
+            <aside class="widget widget-search with-title">
+              <h3 class="widget-title-style01">Search here</h3>
+              <form role="search" method="get" class="search-form" action="#">
+                <label>
+                  <span class="screen-reader-text">Search for:</span>
+                  <input type="search" class="input-text" placeholder="Search …" value="" name="s">
+                </label>
+                <button class="btn" type="submit"></button>
+              </form>
+            </aside>
+
+            <aside class="widget widget-categories with-title">
+              <h3 class="widget-title-style01">Categories</h3>
+              <ul>
+                <li><a href="<?= m_path('blog', [], true) ?>">Compliance</a></li>
+                <li><a href="<?= m_path('blog', [], true) ?>">Cloud &amp; Infrastructure</a></li>
+                <li><a href="<?= m_path('blog', [], true) ?>">Cybersecurity</a></li>
+                <li><a href="<?= m_path('blog', [], true) ?>">Announcements</a></li>
+                <li><a href="<?= m_path('blog', [], true) ?>">Case Studies</a></li>
+              </ul>
+            </aside>
+
+            <?php if (!empty($recentPosts)): ?>
+            <aside class="widget widget-recent-post with-title">
+              <h3 class="widget-title-style01">Recent Posts</h3>
+              <div class="row">
+                <div class="col-lg-12">
+                  <ul class="widget-post prt-recent-post-list">
+                    <?php foreach ($recentPosts as $rp): $rpCover = strapi_img($rp['cover_image'] ?? null); ?>
+                    <li>
+                      <a href="<?= m_path('blog.detail', [$rp['slug']], true) ?>"><img class="img-fluid" src="<?= $rpCover ?: asset('images/placeholder-blog.svg') ?>" alt="post-img" width="150" height="150"></a>
+                      <div class="post-detail">
+                        <?php if (!empty($rp['published_date'])): ?>
+                        <span class="post-date"><i class="fa fa-calendar"></i><?= date('F j, Y', strtotime($rp['published_date'])) ?></span>
+                        <?php endif; ?>
+                        <a href="<?= m_path('blog.detail', [$rp['slug']], true) ?>"><?= htmlspecialchars($rp['title']) ?></a>
+                      </div>
+                    </li>
+                    <?php endforeach; ?>
+                  </ul>
+                </div>
+              </div>
+            </aside>
             <?php endif; ?>
-            <h3 class="blog-card-title"><?= htmlspecialchars($article['title']) ?></h3>
-            <?php if ($article['excerpt']): ?>
-            <p class="blog-card-excerpt"><?= htmlspecialchars(mb_substr($article['excerpt'], 0, 120)) ?>…</p>
+
+            <?php if (!empty($allTags)): ?>
+            <aside class="widget tagcloud-widget with-title">
+              <h3 class="widget-title-style01">Tags</h3>
+              <div class="tagcloud">
+                <?php foreach ($allTags as $tag): ?>
+                <a href="<?= m_path('blog', [], true) ?>" class="tag-cloud-link"><?= htmlspecialchars($tag) ?></a>
+                <?php endforeach; ?>
+              </div>
+            </aside>
             <?php endif; ?>
-            <span class="blog-card-more">Lire l'article →</span>
+
+            <aside class="widget widget-banner res-991-ml-5">
+              <div class="prt-col-bgcolor-yes prt-bgcolor-darkgrey prt-textcolor-white col-bg-img-seven prt-col-bgimage-yes prt-bg spacing-13">
+                <div class="prt-col-wrapper-bg-layer prt-bg-layer">
+                  <div class="prt-col-wrapper-bg-layer-inner"></div>
+                </div>
+                <div class="layer-content">
+                  <div class="prt-sidebar-contact-box">
+                    <div class="prt-sidebar-subheading">contact us today</div>
+                    <div class="prt-sidebar-heading">Ready to start your mission? Let's talk.</div>
+                    <div class="prt-sidebar-phone">
+                      <span class="link-text">
+                        <a href="<?= m_path('contact', [], true) ?>">
+                          <i class="flaticon-mail"></i> Contact us now
+                        </a>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </aside>
+
           </div>
-        </a>
-      </article>
-      <?php endforeach; ?>
+        </div>
+        <!-- sidebar end -->
+
+      </div>
     </div>
-    <?php else: ?>
-    <div style="text-align:center;padding:80px 0">
-      <div style="font-size:48px;margin-bottom:16px">✍️</div>
-      <h3 style="color:#fff;font-size:22px;margin-bottom:12px">Bientôt disponible</h3>
-      <p style="color:rgba(255,255,255,.5);font-size:15px">Nos premiers articles arrivent très bientôt. Revenez nous rendre visite !</p>
-      <a href="<?= m_path('home', [], true) ?>" style="display:inline-block;margin-top:32px;padding:12px 28px;background:var(--gc-gradient);color:#fff;border-radius:50px;font-weight:700;font-size:14px;text-decoration:none">Retour à l'accueil</a>
-    </div>
-    <?php endif; ?>
   </div>
-</section>
+</div><!--/.site-main-->
 
-<?php include view('public/layout/footer'); ?>
+<?php include view('layout/footer'); ?>
+<?php include view('layout/js'); ?>
 
-<style>
-.blog-cat-btn{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.7);padding:8px 20px;border-radius:50px;font-size:13px;font-weight:600;cursor:pointer;transition:.2s}
-.blog-cat-btn:hover,.blog-cat-btn.on{background:var(--gc-gradient);border-color:transparent;color:#fff}
-.blog-card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:16px;overflow:hidden;transition:transform .3s,box-shadow .3s}
-.blog-card:hover{transform:translateY(-6px);box-shadow:0 24px 60px rgba(0,0,0,.4)}
-.blog-card-img{position:relative;height:220px;overflow:hidden}
-.blog-card-img img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
-.blog-card:hover .blog-card-img img{transform:scale(1.06)}
-.blog-card-tag{position:absolute;top:14px;left:14px;background:var(--gc-gradient);color:#fff;font-size:11px;font-weight:700;padding:4px 12px;border-radius:50px;text-transform:uppercase;letter-spacing:.5px}
-.blog-card-body{padding:24px}
-.blog-card-date{font-size:12px;color:var(--gc-accent);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px}
-.blog-card-title{font-size:17px;font-weight:700;color:#fff;line-height:1.4;margin-bottom:12px}
-.blog-card-excerpt{font-size:13px;color:rgba(255,255,255,.5);line-height:1.65;margin-bottom:16px}
-.blog-card-more{font-size:13px;color:var(--gc-accent);font-weight:600}
-</style>
-<script>
-function filterBlog(btn){
-  document.querySelectorAll('.blog-cat-btn').forEach(function(b){ b.classList.remove('on'); });
-  btn.classList.add('on');
-  var cat=btn.dataset.cat;
-  document.querySelectorAll('.blog-card').forEach(function(card){
-    card.style.display=(cat==='all'||card.dataset.cat===cat)?'':'none';
-  });
-}
-</script>
+</body>
+</html>
