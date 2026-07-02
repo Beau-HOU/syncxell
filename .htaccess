@@ -1,0 +1,26 @@
+Options +FollowSymlinks
+AddDefaultCharset UTF-8
+RewriteEngine On
+
+# HTTPS redirect — décommenter en production
+# RewriteCond %{HTTPS} !on
+# RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [redirect=301,L]
+
+# ── PUBLIC ──────────────────────────────────────────────────────────────────
+RewriteRule ^$                                  public/index.php [L]
+RewriteRule ^about$                             public/about.php [L]
+RewriteRule ^services$                          public/services.php [L]
+RewriteRule ^services/([a-z0-9\-]+)/([a-z0-9\-]+)$   public/sub-service-detail.php?category=$1&slug=$2 [L]
+RewriteRule ^services/([a-z0-9\-]+)$                   public/service-detail.php?slug=$1 [L]
+RewriteRule ^government-hub$                    public/gov-hub.php [L]
+RewriteRule ^blog$                              public/blog.php [L]
+RewriteRule ^blog/([a-z0-9\-]+)$               public/blog-detail.php?slug=$1 [L]
+RewriteRule ^contact$                           public/contact.php [L]
+RewriteRule ^request-for-quote$                 public/rfq.php [L]
+
+# ── AJAX ────────────────────────────────────────────────────────────────────
+RewriteRule ^ajax/rfq$                          public/ajax/rfq.php [L]
+RewriteRule ^ajax/contact$                      public/ajax/contact.php [L]
+
+# ── ERRORS ──────────────────────────────────────────────────────────────────
+RewriteRule ^error/([0-9]+)$                    public/error.php?code=$1 [L]

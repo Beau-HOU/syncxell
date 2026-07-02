@@ -1,0 +1,74 @@
+  <div class="site-banner" role="status" aria-live="polite" id="siteBanner">
+    <span class="site-banner__icon" aria-hidden="true">🔔</span>
+    <span class="site-banner__text">
+      Notre site est en pleine mise à jour pour mieux vous servir.
+      Certaines erreurs peuvent apparaître temporairement. Merci pour votre patience et votre compréhension.
+
+    </span>
+
+    <span style="width: 20%; text-align: end;">
+      <a href="#" class="text-white" id="close_banner" style="margin-left: 10px;">
+        <i class="fa-solid fa-circle-xmark text-danger"></i>
+
+      </a>
+    </span>
+
+  </div>
+
+
+  <style>
+    /* Banner fixé en haut */
+    .site-banner {
+
+      width: 100%;
+
+      padding: 0.75rem 1rem;
+      font: 500 15px/1.4 system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans";
+      background: #fff7cc;
+      border-bottom: 1px solid #f0e2a2;
+      color: #5a4a00;
+      text-align: center;
+      box-sizing: border-box;
+    }
+
+    .site-banner__icon {
+      margin-right: 0.5rem;
+    }
+
+    /* Header sticky qui se cale sous le banner */
+
+
+    /* Mode sombre */
+    @media (prefers-color-scheme: dark) {
+      .site-banner {
+        background: #3b3200;
+        border-bottom-color: #5c5000;
+        color: #ffe58a;
+      }
+
+      .site-header {
+        background: #222;
+        color: #eee;
+      }
+    }
+  </style>
+
+  <script>
+    const banner = document.getElementById('siteBanner');
+    const closeBtn = document.getElementById('close_banner'); // ✅ définir le bouton
+
+    function updateBannerHeight() {
+      const height = banner.offsetHeight;
+      document.documentElement.style.setProperty('--banner-height', height + 'px');
+    }
+
+    // Appel initial et sur redimensionnement
+    updateBannerHeight();
+    window.addEventListener('resize', updateBannerHeight);
+
+    closeBtn.addEventListener("click", function() {
+      banner.style.transition = "opacity 0.5s";
+      banner.style.opacity = 0;
+      setTimeout(() => banner.style.display = "none", 500);
+    });
+  </script>

@@ -23,3 +23,13 @@ npm-debug.log*
 # OS
 .DS_Store
 Thumbs.db
+
+# Sensitive config (credentials — never commit)
+config.php
+service/mailer.php
+service/service_Old.php
+
+
+#
+asset/images/
+Inqord-demo-1/
