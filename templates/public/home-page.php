@@ -31,7 +31,7 @@
                         <p class="text-white" style="font-size:14px;font-weight:400;line-height:1.4;letter-spacing:0.5px;opacity:0.65;">NIST SP 800-53 &bull; FISMA &bull; CMMC &bull; AWS GovCloud &bull; Azure Government</p>
                       </div>
                       <div class="prt-btn-waprre wow animate__flipInX" data-wow-delay="0.8s">
-                        <a href="<?= m_path('rfq', [], true) ?>" class="prt-btn prt-btn-size-md prt-btn-shape-rounded prt-btn-style-fill prt-btn-color-skincolor">Submit an RFQ</a>
+                        <a href="#" class="prt-btn prt-btn-size-md prt-btn-shape-rounded prt-btn-style-fill prt-btn-color-skincolor js-open-rfq">Submit an RFQ</a>
                       </div>
                     </div>
                   </div>
@@ -120,10 +120,14 @@
       <div class="container">
         <div class="row wow fadeInUp">
           <div class="col-xl-5 col-lg-5 m-auto mt-0 mb-0 pr-22 res-1199-pr-15 text-center">
-            <div class="prt-single-image-wrapper">
-              <img class="img-fluid border-rad_30" src="<?= asset('images/single-img-5.jpg') ?>" alt="SYNCXELL team" width="526" height="550">
+            <div class="prt-single-image-wrapper" style="width:525px;height:554px;">
+              <img class="img-fluid border-rad_30"
+                src="<?= asset('images/about2.webp') ?>"
+                alt="SYNCXELL team" 
+                style="width:100%; height:100% !important;object-fit:cover;">
             </div>
           </div>
+
           <div class="col-xl-7 col-lg-7 m-auto mt-0 mb-0 res-991-mt-40 pl-30 res-1199-pl-15 res-991-mt-40">
             <div class="about-content-wrap">
               <div class="section-title-block">
@@ -455,7 +459,7 @@
                   <div class="prt-client-desc">
                     <p>From federal agencies to financial institutions and law firms, SYNCXELL delivers mission-critical IT solutions that meet the highest security and compliance standards.</p>
                   </div>
-                  <a href="<?= m_path('rfq', [], true) ?>" class="prt-btn prt-btn-size-md prt-btn-shape-rounded prt-btn-style-fill prt-btn-color-transparentcolor">Request an estimate</a>
+                  <a href="#" id="openQuotation" class="prt-btn prt-btn-size-md prt-btn-shape-rounded prt-btn-style-fill prt-btn-color-transparentcolor">Request an estimate</a>
                 </div>
               </div>
             </div>
@@ -622,28 +626,30 @@
         <div class="row pl-100 pr-100 res-991-p-0 res-991-pl-15 res-991-pr-15 slick_slider mr_30 ml_30 res-991-ml_15 res-991-mr_15"
           data-slick='{"slidesToShow":3,"slidesToScroll":1,"arrows":false,"dots":false,"autoplay":true,"infinite":true,"responsive":[{"breakpoint":1199,"settings":{"slidesToShow":2}},{"breakpoint":611,"settings":{"slidesToShow":1}}]}'>
           <?php foreach ($caseStudies as $cs):
-            $a      = $cs['attributes'] ?? $cs;
-            $imgUrl = strapi_img($a['cover_image'] ?? null) ?? asset('images/placeholder-portfolio.svg');
+            $imgUrl = strapi_img($cs['cover_image'] ?? null) ?? asset('images/placeholder-portfolio.svg');
+            $csUrl  = m_path('case.detail', [$cs['slug'] ?? ''], true);
+            $sectorLabels = ['federal'=>'Federal Government','local_gov'=>'Local Gov','banking'=>'Banking & Finance','legal'=>'Legal','other'=>'Other'];
+            $sectorLabel  = $sectorLabels[$cs['client_sector'] ?? ''] ?? ($cs['client_sector'] ?? 'Enterprise');
           ?>
           <div class="prt-box-col-wrapper col-lg-4 col-md-4 col-sm-6 col-xs-12">
             <div class="prt-featured-postbox style1">
               <div class="prt-featured-post-item">
                 <div class="featured-thumbnail">
-                  <a href="<?= m_path('blog.detail', [$a['slug'] ?? '#'], true) ?>">
-                    <img class="img-fluid border-rad_30" src="<?= $imgUrl ?>" alt="<?= htmlspecialchars($a['title'] ?? '') ?>">
+                  <a href="<?= $csUrl ?>">
+                    <img class="img-fluid border-rad_30" src="<?= $imgUrl ?>" alt="<?= htmlspecialchars($cs['title'] ?? '') ?>">
                   </a>
                 </div>
                 <div class="prt-featured-overly">
                   <div class="prt-featured-content-box">
-                    <div class="prt-featured-category"><p><?= htmlspecialchars($a['client_sector'] ?? 'Enterprise') ?></p></div>
+                    <div class="prt-featured-category"><p><?= htmlspecialchars($sectorLabel) ?></p></div>
                     <div class="prt-featured-title">
-                      <a href="<?= m_path('blog.detail', [$a['slug'] ?? '#'], true) ?>">
-                        <h3><?= htmlspecialchars($a['title'] ?? '') ?></h3>
+                      <a href="<?= $csUrl ?>">
+                        <h3><?= htmlspecialchars($cs['title'] ?? '') ?></h3>
                       </a>
                     </div>
                   </div>
                   <div class="prt-featured-readmore-btn">
-                    <a href="<?= m_path('blog.detail', [$a['slug'] ?? '#'], true) ?>"><i class="flaticon-right"></i>Read more</a>
+                    <a href="<?= $csUrl ?>"><i class="flaticon-right"></i>Read more</a>
                   </div>
                 </div>
               </div>

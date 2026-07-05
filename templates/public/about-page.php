@@ -24,7 +24,7 @@
               <span>About</span>
             </div>
             <div class="page-title-heading">
-              <h1 class="pb-0">We are SYNCXELL</h1>
+              <h1 class="pb-0">The IT Partner Trusted Where Failure Is Not an Option</h1>
             </div>
           </div>
         </div>
@@ -44,9 +44,9 @@
 
         <div class="col-lg-5 col-md-8 col-sm-8">
           <div class="tm-reveal-effects-yes tm-reveal-direction-lr">
-            <div class="prt-single-image-wrapper elementor-widget-container">
-              <img class="img-fluid border-rad_30"
-                   src="<?= asset('images/single-img-9.jpg') ?>"
+            <div class="prt-single-image-wrapper elementor-widget-container" style="width:505px;height:524px;">
+              <img class="img-fluid border-rad_30" style="width:100%; height:100% !important;object-fit:cover;object-position:75% center;"
+                   src="<?= asset('images/about.webp') ?>"
                    alt="SYNCXELL team">
             </div>
           </div>

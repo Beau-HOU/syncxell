@@ -7871,7 +7871,7 @@
       right: -400px;
       transform: translate(-50%, -50%);
       z-index: 1043;
-      background: white;
+      background: none;
       width: 90%;
       max-width: 900px;
       display: none; /* Hide by default */

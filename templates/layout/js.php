@@ -27,7 +27,7 @@ AOS.init({ offset: 0, duration: 400, delay: 0, once: true });
 $(function () {
 
   /* ── RFQ Popup open / close ── */
-  $(document).on('click', '#openQuotation', function (e) {
+  $(document).on('click', '#openQuotation, .js-open-rfq', function (e) {
     e.preventDefault();
     $('.quotation--popup-overly, #quotation--popup').addClass('active');
     $('body').addClass('overflow-hidden');
@@ -88,6 +88,35 @@ $(function () {
     syncStepNav(prevNum);
   });
 
+  /* ── Services dropdown (custom multi-select) ── */
+  $(document).on('click', '.rfq-dropdown-trigger', function (e) {
+    e.stopPropagation();
+    var $dd = $(this).closest('.rfq-dropdown');
+    var isOpen = $dd.hasClass('open');
+    $('.rfq-dropdown').removeClass('open');
+    if (!isOpen) $dd.addClass('open');
+  });
+  $(document).on('change', '.rfq-dd-opt input[type="checkbox"]', function () {
+    var $dd = $(this).closest('.rfq-dropdown');
+    var labels = [];
+    $dd.find('input[type="checkbox"]:checked').each(function () {
+      labels.push($(this).siblings('span').text().trim());
+    });
+    var $txt = $dd.find('.rfq-dropdown-text');
+    if (labels.length === 0) {
+      $txt.text('Select services…').removeClass('has-value');
+    } else if (labels.length <= 2) {
+      $txt.text(labels.join(', ')).addClass('has-value');
+    } else {
+      $txt.text(labels.length + ' services selected').addClass('has-value');
+    }
+  });
+  $(document).on('click', function (e) {
+    if (!$(e.target).closest('.rfq-dropdown').length) {
+      $('.rfq-dropdown').removeClass('open');
+    }
+  });
+
   /* ── Sector → show/hide conditional fields ── */
   $(document).on('change', '#rfq-sector', function () {
     var v = $(this).val();
@@ -116,6 +145,7 @@ $(function () {
           if (r.success) {
             $('#quotationForm').hide();
             $('#rfq-success').fadeIn();
+            syncStepNav(5);
           } else {
             alert(r.message || 'An error occurred. Please try again.');
             $btn.prop('disabled', false).text('Submit Request');

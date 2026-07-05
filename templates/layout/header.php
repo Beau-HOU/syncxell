@@ -78,17 +78,48 @@
 
               <!-- ── STEP 2 — Project ── -->
               <div class="form-step" data-step="2">
-                <p><label>Services needed <small style="opacity:.6;font-weight:400;">(hold Ctrl / ⌘ to select multiple)</small></label>
-                  <select name="services_requested[]" multiple size="8" class="rfq-multi-select">
-                    <option value="software-application-development">Software &amp; App Development</option>
-                    <option value="cloud-infrastructure-management">Cloud Infrastructure Management</option>
-                    <option value="cybersecurity-compliance">Cybersecurity &amp; Compliance</option>
-                    <option value="network-operations">Network &amp; Operations</option>
-                    <option value="data-services-analytics">Data &amp; Analytics</option>
-                    <option value="advanced-virtualization-hypervisor">Virtualization &amp; Hypervisor</option>
-                    <option value="it-automation-orchestration">IT Automation &amp; Orchestration</option>
-                    <option value="enterprise-os-engineering">Enterprise OS Engineering</option>
-                  </select>
+                <p>
+                  <label>Services needed</label>
+                  <div class="rfq-dropdown" id="rfq-services-dropdown">
+                    <div class="rfq-dropdown-trigger" tabindex="0">
+                      <span class="rfq-dropdown-text">Select services…</span>
+                      <span class="rfq-dd-arrow">&#9660;</span>
+                    </div>
+                    <div class="rfq-dropdown-panel">
+                      <label class="rfq-dd-opt">
+                        <input type="checkbox" name="services_requested[]" value="software-application-development">
+                        <span>Software &amp; App Development</span>
+                      </label>
+                      <label class="rfq-dd-opt">
+                        <input type="checkbox" name="services_requested[]" value="cloud-infrastructure-management">
+                        <span>Cloud Infrastructure Management</span>
+                      </label>
+                      <label class="rfq-dd-opt">
+                        <input type="checkbox" name="services_requested[]" value="cybersecurity-compliance">
+                        <span>Cybersecurity &amp; Compliance</span>
+                      </label>
+                      <label class="rfq-dd-opt">
+                        <input type="checkbox" name="services_requested[]" value="network-operations">
+                        <span>Network &amp; Operations</span>
+                      </label>
+                      <label class="rfq-dd-opt">
+                        <input type="checkbox" name="services_requested[]" value="data-services-analytics">
+                        <span>Data &amp; Analytics</span>
+                      </label>
+                      <label class="rfq-dd-opt">
+                        <input type="checkbox" name="services_requested[]" value="advanced-virtualization-hypervisor">
+                        <span>Virtualization &amp; Hypervisor</span>
+                      </label>
+                      <label class="rfq-dd-opt">
+                        <input type="checkbox" name="services_requested[]" value="it-automation-orchestration">
+                        <span>IT Automation &amp; Orchestration</span>
+                      </label>
+                      <label class="rfq-dd-opt">
+                        <input type="checkbox" name="services_requested[]" value="enterprise-os-engineering">
+                        <span>Enterprise OS Engineering</span>
+                      </label>
+                    </div>
+                  </div>
                 </p>
                 <p><label>Project description *</label>
                   <textarea name="project_description" rows="4" placeholder="Describe your project, mission, or compliance challenge..." required></textarea></p>
@@ -198,7 +229,7 @@
             </form>
 
             <!-- Success message -->
-            <div id="rfq-success" style="display:none;padding:30px;text-align:center;">
+            <div id="rfq-success" style="display:none;padding:30px;text-align:center;position:absolute;top:50%;transform:translateY(-50%);width:100%;">
               <div style="font-size:48px;margin-bottom:15px;">&#10003;</div>
               <h3 style="color:#fff;margin-bottom:10px;">Request received!</h3>
               <p style="color:rgba(255,255,255,.8);">Our team will contact you within one business day to discuss your requirements.</p>

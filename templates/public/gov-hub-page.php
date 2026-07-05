@@ -40,9 +40,10 @@
     <div class="container">
       <div class="row align-items-center">
         <div class="col-lg-5 col-md-7 m-auto mt-0 mb-0 res-991-mb-30">
-          <div class="prt-single-image-wrapper mb-10">
+          <div class="prt-single-image-wrapper mb-10" style="width: 505px; height: 524px;">
             <img class="img-fluid border-rad_30"
-                 src="<?= asset('images/single-img-7.jpg') ?>"
+                 src="<?= asset('images/gov2.webp') ?>"
+                 style="width:100%; height:100% !important;object-fit:cover;"
                  alt="SYNCXELL Federal Government IT">
           </div>
         </div>
@@ -65,7 +66,7 @@
               <div class="prt-featured-icon-box style1">
                 <div class="prt-featured-icon-box-inner style1 d-flex">
                   <div class="prt-featured-icon style1 m-0">
-                    <i class="flaticon-cybersecurity"></i>
+                    <i class="flaticon-double-tick"></i>
                   </div>
                   <div class="prt-featured-content-box res-767-pl-20 pl-20">
                     <div class="prt-featured-content-inner">
@@ -106,7 +107,7 @@
   </section>
 
   <!-- ── COMPLIANCE FRAMEWORKS (cta-section-style02) ── -->
-  <section class="prt-row cta-section-style02 bg-img2 clearfix position-relative">
+  <section class="prt-row cta-section-style02 bg-img2 clearfix position-relative" style="background-image:url('<?= asset('images/gov.webp') ?>');background-size:cover;background-position:center center;">
     <div class="container">
       <div class="row">
         <div class="col-lg-12 pt-200 res-575-pt-60">
@@ -127,7 +128,7 @@
               <div class="featured-iconbox-style02 d-flex pt-30">
                 <div class="featured-iconbox-inner-content res-991-mb-20 res-991-pl-0">
                   <div class="featured-icon-box-style02">
-                    <i class="flaticon-cybersecurity"></i>
+                    <i class="flaticon-check-box"></i>
                   </div>
                   <div class="featured-title-style02">
                     <h3>NIST SP 800-53</h3>
@@ -139,7 +140,7 @@
               <div class="featured-iconbox-style02 d-flex pt-30">
                 <div class="featured-iconbox-inner-content d-flex res-991-mb-20 res-991-pl-0">
                   <div class="featured-icon-box-style02">
-                    <i class="flaticon-shield"></i>
+                    <i class="flaticon-award"></i>
                   </div>
                   <div class="featured-title-style02">
                     <h3>FISMA ATO Ready</h3>
@@ -233,7 +234,7 @@
           <div class="tm-reveal-effects-yes tm-reveal-direction-rl">
             <div class="prt-single-image-wrapper elementor-widget-container">
               <img width="767" height="475" class="img-fluid border-rad_30"
-                   src="<?= asset('images/single-img-4.png') ?>"
+                   src="<?= asset('images/gov3.webp') ?>"
                    alt="Federal contracting and teaming">
             </div>
           </div>
