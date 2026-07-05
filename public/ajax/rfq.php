@@ -42,16 +42,46 @@ foreach (['desired_timeline', 'it_budget_range', 'how_did_you_hear', 'set_aside_
     $payload[$f] = $v !== '' ? $v : null;
 }
 
+// Étape 1 — créer l'entrée RFQ (sans les fichiers)
 $result = strapi_post('rfq-submissions', $payload);
 
-// Success = Strapi returned {data: {id: ...}} with no error key
-if (!empty($result['data']['id']) && empty($result['error'])) {
-    echo json_encode(['success' => true]);
-} else {
+if ($result === null) {
+    error_log('RFQ: strapi_post returned null — Strapi may be down or unreachable');
+    echo json_encode(['success' => false, 'message' => 'Could not reach the submission service. Please try again or email us directly.']);
+    exit;
+}
+
+if (empty($result['data']['id']) || !empty($result['error'])) {
     $strapiMsg = $result['error']['message'] ?? null;
     error_log('RFQ Strapi error: ' . json_encode($result));
     echo json_encode([
         'success' => false,
         'message' => $strapiMsg ?: 'Submission failed. Please try again or email us directly.',
     ]);
+    exit;
 }
+
+$entryId = (int) $result['data']['id'];
+
+// Étape 2 — upload des fichiers RFP liés à l'entrée créée
+if (!empty($_FILES['rfp_documents']['tmp_name'])) {
+    $f        = $_FILES['rfp_documents'];
+    $tmpNames = is_array($f['tmp_name']) ? $f['tmp_name'] : [$f['tmp_name']];
+    $names    = is_array($f['name'])     ? $f['name']     : [$f['name']];
+    $types    = is_array($f['type'])     ? $f['type']     : [$f['type']];
+    $errors   = is_array($f['error'])    ? $f['error']    : [$f['error']];
+
+    foreach ($tmpNames as $i => $tmp) {
+        if ($errors[$i] !== UPLOAD_ERR_OK || empty($tmp)) continue;
+        strapi_upload(
+            $tmp,
+            $names[$i],
+            $types[$i] ?: 'application/octet-stream',
+            $entryId,
+            'api::rfq-submission.rfq-submission',
+            'rfp_documents'
+        );
+    }
+}
+
+echo json_encode(['success' => true]);

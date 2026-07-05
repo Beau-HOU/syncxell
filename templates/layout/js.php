@@ -151,7 +151,9 @@ $(function () {
     $.ajax({
       url:         $(this).attr('action'),
       method:      'POST',
-      data:        $(this).serialize(),
+      data:        new FormData(this),
+      contentType: false,
+      processData: false,
       success: function (res) {
         try {
           var r = (typeof res === 'string') ? JSON.parse(res) : res;
@@ -164,8 +166,8 @@ $(function () {
             $btn.prop('disabled', false).text('Submit Request');
           }
         } catch (ex) {
-          $('#quotationForm').hide();
-          $('#rfq-success').fadeIn();
+          alert('Unexpected server error. Please try again or email us directly.');
+          $btn.prop('disabled', false).text('Submit Request');
         }
       },
       error: function () {
