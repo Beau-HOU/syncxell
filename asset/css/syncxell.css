@@ -228,6 +228,33 @@ body:not(.home-page) .prt-stickable-header:not(.fixed-header) .main-menu .menu >
   width: 100%;
 }
 
+/* ── Blog list cards (style4 : image gauche pleine hauteur) ── */
+.featured-imagebox-post.style4 .featured-thumbnail a {
+  height: 100%;
+}
+.featured-imagebox-post.style4 .featured-thumbnail img {
+  height: 100% !important;
+  border-radius: 15px 0 0 15px;
+}
+.featured-imagebox-post.style4 .featured-content-post .featured-title h3 {
+  margin: 15px 0 12px;
+}
+.featured-imagebox-post.style4 .post-excerpt p {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  overflow: hidden;
+  margin: 0 0 25px;
+  font-size: 0.95rem;
+  color: var(--sx-gray);
+}
+.widget-categories li.active > a,
+.tagcloud .tag-cloud-link.active {
+  color: var(--sx-gold);
+  font-weight: 600;
+}
+
 /* ── Service boxes ───────────────────────────────────────── */
 .service-section .row.pb-20 {
   --bs-gutter-x: 2.5rem;
@@ -244,6 +271,10 @@ body:not(.home-page) .prt-stickable-header:not(.fixed-header) .main-menu .menu >
 }
 .prt-bottom-buttonbox a::after {
   /* background-color: var(--sx-gold); */
+}
+.service-icon-box .prt-bottom-buttonbox {
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
 /* ── About section ───────────────────────────────────────── */
@@ -566,3 +597,142 @@ body:not(.home-page) .prt-stickable-header:not(.fixed-header) .main-menu .menu >
   margin-top: 10px;
 }
 
+
+/* ── RFQ Modal — step nav & checkboxes ── */
+.rfq-steps-nav {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.rfq-step-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  opacity: .45;
+  transition: opacity .25s;
+}
+.rfq-step-item.active,
+.rfq-step-item.done {
+  opacity: 1;
+}
+.rfq-step-num {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: .8rem;
+  font-weight: 700;
+  color: #fff;
+  flex-shrink: 0;
+  transition: background .25s, border-color .25s;
+}
+.rfq-step-item.active .rfq-step-num {
+  background: var(--skin-color);
+  border-color: var(--skin-color);
+}
+.rfq-step-item.done .rfq-step-num {
+  background: rgba(255,255,255,.2);
+  border-color: rgba(255,255,255,.6);
+}
+.rfq-step-item.done .rfq-step-num::after {
+  content: '✓';
+}
+.rfq-step-item.done .rfq-step-num { font-size: 0; }
+.rfq-step-item.done .rfq-step-num::after { font-size: .85rem; }
+.rfq-step-label {
+  color: rgba(255,255,255,.9);
+  font-size: .9rem;
+  font-weight: 500;
+}
+
+/* Checkbox grid */
+.rfq-check-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px 16px;
+  margin: 6px 0 4px;
+}
+.rfq-check {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: rgba(255,255,255,.85);
+  font-size: .85rem;
+  cursor: pointer;
+  font-weight: 400;
+}
+.rfq-check input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--skin-color);
+  flex-shrink: 0;
+}
+
+/* Error highlight */
+#quotation--popup .rfq-error {
+  border-color: #f87171 !important;
+  box-shadow: 0 0 0 2px rgba(248,113,113,.3);
+}
+
+/* File input */
+#quotation--popup input[type="file"] {
+  color: rgba(255,255,255,.7);
+  font-size: .85rem;
+}
+
+/* ── Multi-select services ── */
+#quotation--popup select.rfq-multi-select {
+  border-radius: 15px !important;
+  padding: 10px 15px !important;
+  height: auto !important;
+  resize: none;
+  appearance: none;
+  -webkit-appearance: none;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255,255,255,.3) transparent;
+}
+#quotation--popup select.rfq-multi-select::-webkit-scrollbar {
+  width: 5px;
+}
+#quotation--popup select.rfq-multi-select::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,.3);
+  border-radius: 10px;
+}
+#quotation--popup select.rfq-multi-select option {
+  padding: 8px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  color: #000;
+}
+#quotation--popup select.rfq-multi-select option:checked {
+  background: var(--skin-color);
+  color: #fff;
+}
+
+/* ── Reset popup input styles for checkboxes ── */
+#quotation--popup input[type="checkbox"] {
+  width: 18px !important;
+  height: 18px !important;
+  min-width: 18px !important;
+  padding: 0 !important;
+  border-radius: 4px !important;
+  border: 1px solid rgba(255,255,255,.5) !important;
+  background: rgba(255,255,255,.1) !important;
+  accent-color: var(--skin-color);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+#quotation--popup .rfq-consent-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  cursor: pointer;
+  color: rgba(255,255,255,.85);
+  font-size: .875rem;
+  line-height: 1.5;
+  font-weight: 400;
+}

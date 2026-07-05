@@ -461,7 +461,7 @@ $(document).ready(function() {
 
 $(document).ready(function() {
 
-    // Tab click
+    // Tab click — content tabs only (not isotope portfolio filters)
     $('.tabs .tab').click(function(e) {
         e.preventDefault();
 
@@ -471,18 +471,27 @@ $(document).ready(function() {
         $('.tabs .tab').removeClass('active');
         $(this).addClass('active');
 
+        // Guard: only run content-tab logic when content tabs exist
+        if (!$('.content-tab').length) return;
+
         // Show the selected content tab
         $('.content-tab').hide();
-        $(filter).show();
+        if (filter && filter !== '*') {
+            $(filter).show();
+        } else {
+            $('.content-tab').show();
+        }
 
         // Close all toggles in all content
         $('.toggle .toggle-content').hide();
         $('.toggle').removeClass('open');
 
         // Open only the first toggle in the current tab
-        var firstToggle = $(filter).find('.toggle').first();
-        firstToggle.addClass('open');
-        firstToggle.find('.toggle-content').show();
+        if (filter && filter !== '*') {
+            var firstToggle = $(filter).find('.toggle').first();
+            firstToggle.addClass('open');
+            firstToggle.find('.toggle-content').show();
+        }
     });
 
     // Toggle click

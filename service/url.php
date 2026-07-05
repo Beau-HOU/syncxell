@@ -9,6 +9,8 @@ function m_path(string $path, $params = [], bool $absolute = false)
     "service.detail" => "services/*",
     "service.sub"    => "services/*/*",
     "gov.hub"        => "government-hub",
+    "case.studies"   => "case-studies",
+    "case.detail"    => "case-studies/*",
     "blog"           => "blog",
     "blog.detail"    => "blog/*",
     "contact"        => "contact",

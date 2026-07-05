@@ -2688,7 +2688,7 @@
         flex: 1;
      }
      .service-icon-box .prt-bottom-buttonbox{
-        margin-top: auto;
+        margin-top: 12px;
      }
      .service-icon-box:hover .service-iconbox-inner .service-imagebox{
         animation: ttm-bounce 0.6s ease-in-out 60ms;
@@ -7903,7 +7903,7 @@
         overflow: hidden;
         border: 0;   
         text-align: center;
-        background-image: url(https://placehold.co/1300x554/27008f/0000FF/?text=images/bg-image/header_extra.jpg);
+        background-image: url(../images/header_extra.jpg);
        background-position: center center;
         background-repeat: no-repeat;
         background-size: cover;

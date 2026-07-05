@@ -5,66 +5,211 @@
   <div class="modal-content">
     <div class="container">
       <div class="row">
+
+        <!-- LEFT — branding + step tracker -->
         <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12">
           <div class="prt-newslettercontent">
-            <h3 class="prt-pop-quotationform-title">Request a Consultation</h3>
-            <p class="prt-pop-quotationform-details">Tell us about your mission requirements. Our team responds within one business day.</p>
+            <h3 class="prt-pop-quotationform-title">Request a Quote</h3>
+            <p class="prt-pop-quotationform-details">Tell us about your mission requirements. Our specialists respond within one business day.</p>
+            <!-- Step indicators -->
+            <div class="rfq-steps-nav">
+              <div class="rfq-step-item active" data-step="1">
+                <span class="rfq-step-num">01</span>
+                <span class="rfq-step-label">Contact info</span>
+              </div>
+              <div class="rfq-step-item" data-step="2">
+                <span class="rfq-step-num">02</span>
+                <span class="rfq-step-label">Project details</span>
+              </div>
+              <div class="rfq-step-item" data-step="3">
+                <span class="rfq-step-num">03</span>
+                <span class="rfq-step-label">Requirements</span>
+              </div>
+              <div class="rfq-step-item" data-step="4">
+                <span class="rfq-step-num">04</span>
+                <span class="rfq-step-label">Final step</span>
+              </div>
+            </div>
           </div>
         </div>
+
+        <!-- RIGHT — form -->
         <div class="col-md-8 col-lg-8 col-sm-12 col-xs-12">
           <div class="popup-right">
-            <form id="quotationForm" action="<?= m_path('ajax.rfq', [], true) ?>" method="POST">
-              <!-- Step 1 -->
-              <div class="form-step active">
+            <form id="quotationForm" action="<?= m_path('ajax.rfq', [], true) ?>" method="POST" enctype="multipart/form-data">
+
+              <!-- ── STEP 1 — Contact ── -->
+              <div class="form-step active" data-step="1">
                 <div class="row">
-                  <div class="col-lg-12">
-                    <p><label>Your name *</label>
-                      <input type="text" name="contact_first_name" placeholder="First name" required></p>
+                  <div class="col-lg-6">
+                    <p><label>First name *</label>
+                      <input type="text" name="contact_first_name" placeholder="John" required></p>
                   </div>
                   <div class="col-lg-6">
-                    <p><label>Work Email *</label>
-                      <input type="email" name="contact_email" placeholder="your@agency.gov" required></p>
+                    <p><label>Last name *</label>
+                      <input type="text" name="contact_last_name" placeholder="Smith" required></p>
                   </div>
                   <div class="col-lg-6">
-                    <p><label>Last Name *</label>
-                      <input type="text" name="contact_last_name" placeholder="Last name" required></p>
+                    <p><label>Work email *</label>
+                      <input type="email" name="contact_email" placeholder="you@agency.gov" required></p>
+                  </div>
+                  <div class="col-lg-6">
+                    <p><label>Phone</label>
+                      <input type="tel" name="contact_phone" placeholder="+1 (555) 000-0000"></p>
                   </div>
                   <div class="col-lg-6">
                     <p><label>Organization *</label>
-                      <input type="text" name="organization" placeholder="Agency / Company" required></p>
+                      <input type="text" name="organization" placeholder="Agency / Company name" required></p>
                   </div>
                   <div class="col-lg-6">
                     <p><label>Sector *</label>
-                      <select name="sector" required>
+                      <select name="sector" id="rfq-sector" required>
                         <option value="" disabled selected>Select your sector</option>
                         <option value="federal">Federal Government</option>
-                        <option value="local_gov">Local / Municipal Gov</option>
+                        <option value="local_gov">Local / Municipal Government</option>
                         <option value="banking">Banking &amp; Finance</option>
                         <option value="legal">Law Firm / Legal</option>
                         <option value="other">Other Enterprise</option>
                       </select></p>
                   </div>
                 </div>
-                <p><button type="button" class="next-btn">Next</button></p>
+                <p><button type="button" class="next-btn prt-btn prt-btn-size-md prt-btn-shape-rounded prt-btn-style-fill prt-btn-color-skincolor">Next &rarr;</button></p>
               </div>
-              <!-- Step 2 -->
-              <div class="form-step">
-                <p><label>Describe your requirement *</label>
-                  <textarea name="project_description" rows="5" placeholder="Outline your project, timeline, or compliance need..." required></textarea></p>
+
+              <!-- ── STEP 2 — Project ── -->
+              <div class="form-step" data-step="2">
+                <p><label>Services needed <small style="opacity:.6;font-weight:400;">(hold Ctrl / ⌘ to select multiple)</small></label>
+                  <select name="services_requested[]" multiple size="8" class="rfq-multi-select">
+                    <option value="software-application-development">Software &amp; App Development</option>
+                    <option value="cloud-infrastructure-management">Cloud Infrastructure Management</option>
+                    <option value="cybersecurity-compliance">Cybersecurity &amp; Compliance</option>
+                    <option value="network-operations">Network &amp; Operations</option>
+                    <option value="data-services-analytics">Data &amp; Analytics</option>
+                    <option value="advanced-virtualization-hypervisor">Virtualization &amp; Hypervisor</option>
+                    <option value="it-automation-orchestration">IT Automation &amp; Orchestration</option>
+                    <option value="enterprise-os-engineering">Enterprise OS Engineering</option>
+                  </select>
+                </p>
+                <p><label>Project description *</label>
+                  <textarea name="project_description" rows="4" placeholder="Describe your project, mission, or compliance challenge..." required></textarea></p>
+                <div class="row">
+                  <div class="col-lg-6">
+                    <p><label>Desired timeline</label>
+                      <select name="desired_timeline">
+                        <option value="" disabled selected>Select timeline</option>
+                        <option value="immediate">Immediately</option>
+                        <option value="months_3">Within 3 months</option>
+                        <option value="months_6">Within 6 months</option>
+                        <option value="year_1">Within 1 year</option>
+                        <option value="exploratory">Exploratory only</option>
+                      </select></p>
+                  </div>
+                  <div class="col-lg-6">
+                    <p><label>IT budget range</label>
+                      <select name="it_budget_range">
+                        <option value="" disabled selected>Select range</option>
+                        <option value="under_50k">Under $50K</option>
+                        <option value="tier_50k_250k">$50K – $250K</option>
+                        <option value="tier_250k_1m">$250K – $1M</option>
+                        <option value="tier_1m_5m">$1M – $5M</option>
+                        <option value="over_5m">Over $5M</option>
+                      </select></p>
+                  </div>
+                </div>
                 <p>
-                  <button type="button" class="prev-btn">Previous</button>
-                  <button type="submit" class="ml-10">Submit</button>
+                  <button type="button" class="prev-btn prt-btn prt-btn-size-md prt-btn-shape-rounded prt-btn-style-border">&larr; Back</button>
+                  <button type="button" class="next-btn prt-btn prt-btn-size-md prt-btn-shape-rounded prt-btn-style-fill prt-btn-color-skincolor ml-10">Next &rarr;</button>
                 </p>
               </div>
+
+              <!-- ── STEP 3 — Compliance + Sector-specific ── -->
+              <div class="form-step" data-step="3">
+                <p><label>Compliance frameworks needed</label>
+                  <span class="rfq-check-grid">
+                    <label class="rfq-check"><input type="checkbox" name="compliance_needs[]" value="nist_800_53"> NIST SP 800-53</label>
+                    <label class="rfq-check"><input type="checkbox" name="compliance_needs[]" value="fisma"> FISMA ATO</label>
+                    <label class="rfq-check"><input type="checkbox" name="compliance_needs[]" value="cmmc"> CMMC Level 2/3</label>
+                    <label class="rfq-check"><input type="checkbox" name="compliance_needs[]" value="fedramp"> FedRAMP</label>
+                    <label class="rfq-check"><input type="checkbox" name="compliance_needs[]" value="soc2"> SOC 2 Type II</label>
+                    <label class="rfq-check"><input type="checkbox" name="compliance_needs[]" value="disa_stig"> DISA STIGs</label>
+                  </span>
+                </p>
+
+                <!-- Federal-specific -->
+                <div id="rfq-federal-fields" style="display:none;">
+                  <div class="row">
+                    <div class="col-lg-6">
+                      <p><label>Federal agency</label>
+                        <input type="text" name="federal_agency" placeholder="e.g. DHS, DoD, HHS"></p>
+                    </div>
+                    <div class="col-lg-6">
+                      <p><label>Solicitation number</label>
+                        <input type="text" name="solicitation_number" placeholder="e.g. 70RSAT24R00000001"></p>
+                    </div>
+                  </div>
+                  <p><label>Set-aside type</label>
+                    <select name="set_aside_type">
+                      <option value="none">No set-aside</option>
+                      <option value="small_business">Small Business</option>
+                      <option value="sba_8a">SBA 8(a)</option>
+                      <option value="hubzone">HUBZone</option>
+                      <option value="sdvosb">SDVOSB</option>
+                      <option value="wosb">WOSB</option>
+                    </select></p>
+                </div>
+
+                <!-- Local gov-specific -->
+                <div id="rfq-localgov-fields" style="display:none;">
+                  <p><label>Municipality / jurisdiction name</label>
+                    <input type="text" name="municipality_name" placeholder="e.g. City of Atlanta, GA"></p>
+                </div>
+
+                <p>
+                  <button type="button" class="prev-btn prt-btn prt-btn-size-md prt-btn-shape-rounded prt-btn-style-border">&larr; Back</button>
+                  <button type="button" class="next-btn prt-btn prt-btn-size-md prt-btn-shape-rounded prt-btn-style-fill prt-btn-color-skincolor ml-10">Next &rarr;</button>
+                </p>
+              </div>
+
+              <!-- ── STEP 4 — Final ── -->
+              <div class="form-step" data-step="4">
+                <p><label>How did you hear about us?</label>
+                  <select name="how_did_you_hear">
+                    <option value="" disabled selected>Select an option</option>
+                    <option value="sam_gov">SAM.gov</option>
+                    <option value="linkedin">LinkedIn</option>
+                    <option value="referral">Referral</option>
+                    <option value="search">Search engine</option>
+                    <option value="other">Other</option>
+                  </select></p>
+                <p><label>Attach RFP / RFQ documents (optional)</label>
+                  <input type="file" name="rfp_documents[]" multiple accept=".pdf,.doc,.docx,.xlsx"></p>
+                <p style="margin-top:10px;">
+                  <label class="rfq-consent-label">
+                    <input type="checkbox" name="consent_to_contact" value="1" required>
+                    <span>I consent to SYNCXELL LLC contacting me regarding this request. My information will be handled in accordance with applicable privacy laws. *</span>
+                  </label>
+                </p>
+                <p style="margin-top:20px;">
+                  <button type="button" class="prev-btn prt-btn prt-btn-size-md prt-btn-shape-rounded prt-btn-style-border">&larr; Back</button>
+                  <button type="submit" id="rfq-submit-btn" class="prt-btn prt-btn-size-md prt-btn-shape-rounded prt-btn-style-fill prt-btn-color-skincolor ml-10">Submit Request</button>
+                </p>
+              </div>
+
             </form>
-            <div id="rfq-success" style="display:none;padding:20px;background:#d1fae5;border-radius:4px;color:#065f46;">
-              Your request has been received. Our team will contact you within one business day.
+
+            <!-- Success message -->
+            <div id="rfq-success" style="display:none;padding:30px;text-align:center;">
+              <div style="font-size:48px;margin-bottom:15px;">&#10003;</div>
+              <h3 style="color:#fff;margin-bottom:10px;">Request received!</h3>
+              <p style="color:rgba(255,255,255,.8);">Our team will contact you within one business day to discuss your requirements.</p>
             </div>
+
           </div>
         </div>
+
       </div>
     </div>
-    <span class="close-btn" id="closePopup" style="position:absolute;top:10px;right:20px;font-size:28px;cursor:pointer;">&times;</span>
+    <span class="close-btn" id="closePopup" style="position:absolute;top:15px;right:25px;font-size:32px;cursor:pointer;color:#fff;line-height:1;">&times;</span>
   </div>
 </div>
 
@@ -149,6 +294,9 @@
                       </li>
                       <li class="<?= (isset($activePage) && $activePage == 'gov-hub') ? 'active' : '' ?>">
                         <a href="<?= m_path('gov.hub', [], true) ?>">Gov Hub</a>
+                      </li>
+                      <li class="<?= (isset($activePage) && $activePage == 'case-studies') ? 'active' : '' ?>">
+                        <a href="<?= m_path('case.studies', [], true) ?>">Case Studies</a>
                       </li>
                       <li class="<?= (isset($activePage) && $activePage == 'blog') ? 'active' : '' ?>">
                         <a href="<?= m_path('blog', [], true) ?>">Insights</a>

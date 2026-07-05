@@ -41,10 +41,23 @@
         <!-- ── ARTICLES (col-8) ── -->
         <div class="col-lg-8 col-md-12 m-auto mt-0 content-area">
           <div class="post prt-blog-classic-inner">
+
+            <?php if ($search !== '' || $activeCategory !== '' || $activeTag !== ''): ?>
+            <div class="mb-30">
+              <p class="m-0">
+                <?= $totalPosts ?> result<?= $totalPosts !== 1 ? 's' : '' ?>
+                <?php if ($search !== ''): ?> for &laquo; <strong><?= htmlspecialchars($search) ?></strong> &raquo;<?php endif; ?>
+                <?php if ($activeCategory !== ''): ?> in <strong><?= htmlspecialchars($blogCategories[$activeCategory]) ?></strong><?php endif; ?>
+                <?php if ($activeTag !== ''): ?> tagged <strong><?= htmlspecialchars($activeTag) ?></strong><?php endif; ?>
+                &mdash; <a href="<?= m_path('blog', [], true) ?>">clear filters</a>
+              </p>
+            </div>
+            <?php endif; ?>
+
             <?php if (!empty($posts)): ?>
               <?php foreach ($posts as $p):
                 $cover = strapi_img($p['cover_image'] ?? null);
-                $categoryLabel = ucwords(str_replace('_', ' ', $p['category'] ?? ''));
+                $categoryLabel = $blogCategories[$p['category'] ?? ''] ?? '';
               ?>
               <article class="post prt-blog-classic">
                 <div class="featured-imagebox featured-imagebox-post style4">
@@ -57,13 +70,18 @@
                     <?php if ($categoryLabel): ?>
                     <div class="post-meta">
                       <span class="prt-meta-line category">
-                        <a href="<?= m_path('blog', [], true) ?>"><?= htmlspecialchars($categoryLabel) ?></a>
+                        <a href="<?= blog_url(['category' => $p['category'], 's' => null, 'tag' => null]) ?>"><?= htmlspecialchars($categoryLabel) ?></a>
                       </span>
                     </div>
                     <?php endif; ?>
                     <div class="featured-title">
                       <h3><a href="<?= m_path('blog.detail', [$p['slug']], true) ?>"><?= htmlspecialchars($p['title']) ?></a></h3>
                     </div>
+                    <?php if (!empty($p['excerpt'])): ?>
+                    <div class="post-excerpt">
+                      <p><?= htmlspecialchars(excerptChars($p['excerpt'], 140)) ?></p>
+                    </div>
+                    <?php endif; ?>
                     <div class="prt-postbox-btn">
                       <a class="prt-btn prt-btn-size-sm btn-inline prt-icon-btn-right" href="<?= m_path('blog.detail', [$p['slug']], true) ?>">More details</a>
                     </div>
@@ -71,16 +89,37 @@
                 </div>
               </article>
               <?php endforeach; ?>
+
+              <?php if ($totalPages > 1): ?>
               <div class="row">
                 <div class="col-md-12 m-auto">
                   <div class="pagination-block text-center prt-pagination">
-                    <span class="page-numbers current">1</span>
+                    <?php if ($page > 1): ?>
+                    <a class="prev page-numbers" href="<?= blog_url($page - 1 > 1 ? ['page' => $page - 1] : []) ?>"><i class="ti ti-arrow-left"></i></a>
+                    <?php endif; ?>
+                    <?php for ($n = 1; $n <= $totalPages; $n++): ?>
+                      <?php if ($n === $page): ?>
+                      <span class="page-numbers current"><?= $n ?></span>
+                      <?php else: ?>
+                      <a class="page-numbers" href="<?= blog_url($n > 1 ? ['page' => $n] : []) ?>"><?= $n ?></a>
+                      <?php endif; ?>
+                    <?php endfor; ?>
+                    <?php if ($page < $totalPages): ?>
+                    <a class="next page-numbers" href="<?= blog_url(['page' => $page + 1]) ?>"><i class="ti ti-arrow-right"></i></a>
+                    <?php endif; ?>
                   </div>
                 </div>
               </div>
+              <?php endif; ?>
+
             <?php else: ?>
               <div class="text-center" style="padding:60px 0;">
+                <?php if ($search !== '' || $activeCategory !== '' || $activeTag !== ''): ?>
+                <p class="mb-20">No articles match your filters.</p>
+                <a class="prt-btn prt-btn-size-sm btn-inline prt-icon-btn-right" href="<?= m_path('blog', [], true) ?>">View all articles</a>
+                <?php else: ?>
                 <p class="m-0">No articles published yet — check back soon.</p>
+                <?php endif; ?>
               </div>
             <?php endif; ?>
           </div>
@@ -96,11 +135,14 @@
 
             <aside class="widget widget-search with-title">
               <h3 class="widget-title-style01">Search here</h3>
-              <form role="search" method="get" class="search-form" action="#">
+              <form role="search" method="get" class="search-form" action="<?= m_path('blog', [], true) ?>">
                 <label>
                   <span class="screen-reader-text">Search for:</span>
-                  <input type="search" class="input-text" placeholder="Search …" value="" name="s">
+                  <input type="search" class="input-text" placeholder="Search …" value="<?= htmlspecialchars($search) ?>" name="s">
                 </label>
+                <?php if ($activeCategory !== ''): ?>
+                <input type="hidden" name="category" value="<?= htmlspecialchars($activeCategory) ?>">
+                <?php endif; ?>
                 <button class="btn" type="submit"></button>
               </form>
             </aside>
@@ -108,11 +150,14 @@
             <aside class="widget widget-categories with-title">
               <h3 class="widget-title-style01">Categories</h3>
               <ul>
-                <li><a href="<?= m_path('blog', [], true) ?>">Compliance</a></li>
-                <li><a href="<?= m_path('blog', [], true) ?>">Cloud &amp; Infrastructure</a></li>
-                <li><a href="<?= m_path('blog', [], true) ?>">Cybersecurity</a></li>
-                <li><a href="<?= m_path('blog', [], true) ?>">Announcements</a></li>
-                <li><a href="<?= m_path('blog', [], true) ?>">Case Studies</a></li>
+                <li class="<?= $activeCategory === '' ? 'active' : '' ?>">
+                  <a href="<?= m_path('blog', [], true) ?>">All</a><span>(<?= count($allPosts) ?>)</span>
+                </li>
+                <?php foreach ($blogCategories as $catKey => $catLabel): if (empty($categoryCounts[$catKey])) continue; ?>
+                <li class="<?= $activeCategory === $catKey ? 'active' : '' ?>">
+                  <a href="<?= blog_url(['category' => $catKey, 's' => null, 'tag' => null]) ?>"><?= htmlspecialchars($catLabel) ?></a><span>(<?= $categoryCounts[$catKey] ?>)</span>
+                </li>
+                <?php endforeach; ?>
               </ul>
             </aside>
 
@@ -144,7 +189,7 @@
               <h3 class="widget-title-style01">Tags</h3>
               <div class="tagcloud">
                 <?php foreach ($allTags as $tag): ?>
-                <a href="<?= m_path('blog', [], true) ?>" class="tag-cloud-link"><?= htmlspecialchars($tag) ?></a>
+                <a href="<?= blog_url(['tag' => $tag, 's' => null, 'category' => null]) ?>" class="tag-cloud-link<?= $activeTag === $tag ? ' active' : '' ?>"><?= htmlspecialchars($tag) ?></a>
                 <?php endforeach; ?>
               </div>
             </aside>

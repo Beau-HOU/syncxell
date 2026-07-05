@@ -106,22 +106,28 @@ $coverUrl = strapi_img($post['cover_image'] ?? null);
                     </div>
                   </div>
 
+                  <?php if ($prevPost || $nextPost): ?>
                   <div class="prt-post-prev-next-buttons clearfix row">
                     <div class="col-sm-6 prev-link_wrapper col-6">
+                      <?php if ($prevPost): ?>
                       <div class="pagination-item prev prt-postwith-img">
                         <div class="pagination-content">
-                          <a href="#"><i class="ti-arrow-left"></i> <span class="prt-nav-sub">Previous post</span></a>
+                          <a href="<?= m_path('blog.detail', [$prevPost['slug']], true) ?>" title="<?= htmlspecialchars($prevPost['title']) ?>"><i class="ti-arrow-left"></i> <span class="prt-nav-sub">Previous post</span></a>
                         </div>
                       </div>
+                      <?php endif; ?>
                     </div>
                     <div class="col-sm-6 next-link_wrapper col-6">
+                      <?php if ($nextPost): ?>
                       <div class="pagination-item next prt-postwith-img">
                         <div class="pagination-content">
-                          <a href="#"><span class="prt-nav-sub">Next post</span> <i class="ti-arrow-right"></i></a>
+                          <a href="<?= m_path('blog.detail', [$nextPost['slug']], true) ?>" title="<?= htmlspecialchars($nextPost['title']) ?>"><span class="prt-nav-sub">Next post</span> <i class="ti-arrow-right"></i></a>
                         </div>
                       </div>
+                      <?php endif; ?>
                     </div>
                   </div>
+                  <?php endif; ?>
                 </div>
               </div>
             </div>
@@ -145,7 +151,7 @@ $coverUrl = strapi_img($post['cover_image'] ?? null);
 
             <aside class="widget widget-search with-title">
               <h3 class="widget-title-style01">Search here</h3>
-              <form role="search" method="get" class="search-form" action="#">
+              <form role="search" method="get" class="search-form" action="<?= m_path('blog', [], true) ?>">
                 <label>
                   <span class="screen-reader-text">Search for:</span>
                   <input type="search" class="input-text" placeholder="Search …" value="" name="s">
@@ -157,11 +163,10 @@ $coverUrl = strapi_img($post['cover_image'] ?? null);
             <aside class="widget widget-categories with-title">
               <h3 class="widget-title-style01">Categories</h3>
               <ul>
-                <li><a href="<?= m_path('blog', [], true) ?>">Compliance</a></li>
-                <li><a href="<?= m_path('blog', [], true) ?>">Cloud &amp; Infrastructure</a></li>
-                <li><a href="<?= m_path('blog', [], true) ?>">Cybersecurity</a></li>
-                <li><a href="<?= m_path('blog', [], true) ?>">Announcements</a></li>
-                <li><a href="<?= m_path('blog', [], true) ?>">Case Studies</a></li>
+                <li><a href="<?= m_path('blog', [], true) ?>">All</a></li>
+                <?php foreach ($blogCategories as $catKey => $catLabel): if (empty($categoryCounts[$catKey])) continue; ?>
+                <li><a href="<?= m_path('blog', ['category' => $catKey], true) ?>"><?= htmlspecialchars($catLabel) ?></a></li>
+                <?php endforeach; ?>
               </ul>
             </aside>
 

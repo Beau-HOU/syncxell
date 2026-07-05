@@ -83,6 +83,7 @@
                   <ul class="menu-footer-link">
                     <li><a href="<?= m_path('about', [], true) ?>">About Us</a></li>
                     <li><a href="<?= m_path('gov.hub', [], true) ?>">Gov Hub</a></li>
+                    <li><a href="<?= m_path('case.studies', [], true) ?>">Case Studies</a></li>
                     <li><a href="<?= m_path('blog', [], true) ?>">Insights</a></li>
                     <li><a href="<?= m_path('rfq', [], true) ?>">Request a Quote</a></li>
                     <li><a href="<?= m_path('contact', [], true) ?>">Contact</a></li>
