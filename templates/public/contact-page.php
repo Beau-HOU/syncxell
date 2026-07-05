@@ -59,18 +59,22 @@
                   </span>
                 </div>
                 <div class="col-lg-12">
-                  <span class="text-input">
-                    <select name="contact_sector" style="width:100%;padding:14px 18px;border:1px solid #e0e0e0;border-radius:4px;font-size:14px;color:#555;background:#fff;">
-                      <option value="" disabled selected>Select your sector</option>
-                      <option value="federal">US Federal Government</option>
-                      <option value="local_gov">Local / Municipal Government</option>
-                      <option value="banking">Banking &amp; Finance</option>
-                      <option value="legal">Law Firm / Legal</option>
-                      <option value="defense">Defense Contractor</option>
-                      <option value="healthcare">Healthcare Enterprise</option>
-                      <option value="other">Other Enterprise</option>
-                    </select>
-                  </span>
+                  <div class="rfq-dropdown contact-dd" id="contact-sector-dropdown">
+                    <div class="rfq-dropdown-trigger" tabindex="0">
+                      <span class="rfq-dropdown-text">Select your sector</span>
+                      <span class="rfq-dd-arrow">&#9660;</span>
+                    </div>
+                    <div class="rfq-dropdown-panel">
+                      <div class="rfq-dd-opt" data-value="federal">US Federal Government</div>
+                      <div class="rfq-dd-opt" data-value="local_gov">Local / Municipal Government</div>
+                      <div class="rfq-dd-opt" data-value="banking">Banking &amp; Finance</div>
+                      <div class="rfq-dd-opt" data-value="legal">Law Firm / Legal</div>
+                      <div class="rfq-dd-opt" data-value="defense">Defense Contractor</div>
+                      <div class="rfq-dd-opt" data-value="healthcare">Healthcare Enterprise</div>
+                      <div class="rfq-dd-opt" data-value="other">Other Enterprise</div>
+                    </div>
+                  </div>
+                  <input type="hidden" name="contact_sector" id="contact-sector-value">
                 </div>
                 <div class="col-lg-12">
                   <span class="text-input">

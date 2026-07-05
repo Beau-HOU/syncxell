@@ -792,6 +792,11 @@ body:not(.home-page) .prt-stickable-header:not(.fixed-header) .main-menu .menu >
   flex-shrink: 0;
   cursor: pointer;
 }
+/* Contact page single-select dropdown */
+.contact-dd { margin-bottom: 20px; }
+.contact-dd .rfq-dd-opt { gap: 0; }
+.contact-dd .rfq-dd-opt.selected { color: var(--sx-gold); }
+
 #quotation--popup select.rfq-multi-select::-webkit-scrollbar {
   width: 5px;
 }
@@ -868,4 +873,37 @@ body:not(.home-page) .prt-stickable-header:not(.fixed-header) .main-menu .menu >
   width: 14px;
   height: 14px;
   display: block;
+}
+
+/* ── Footer contact : icônes ── */
+.footer .prt-about-footer .footer-contact-icon {
+  display: inline-block;
+  margin-right: 10px;
+  font-size: 15px;
+  color: #fff;
+  vertical-align: middle;
+  position: relative;
+  top: -1px;
+}
+
+/* ── Bouton outline (prt-btn-style-border) : visible sur fond clair ── */
+.prt-btn.prt-btn-style-border {
+  background-color: transparent;
+  border: 1px solid var(--sx-gold);
+  color: var(--sx-gold);
+}
+.prt-btn.prt-btn-style-border:hover {
+  background-color: var(--sx-gold);
+  border-color: var(--sx-gold);
+  color: #fff;
+}
+/* Popup RFQ (fond sombre) : conserver le style blanc d'origine */
+#quotation--popup .prt-btn.prt-btn-style-border {
+  background-color: transparent;
+  border-color: #fff;
+  color: #fff;
+}
+#quotation--popup .prt-btn.prt-btn-style-border:hover {
+  background-color: #fff;
+  color: var(--sx-blue);
 }

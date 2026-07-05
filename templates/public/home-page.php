@@ -830,7 +830,7 @@
             </div>
             <div class="cta-btn">
               <a href="<?= m_path('services', [], true) ?>" class="prt-btn prt-btn-size-md prt-btn-shape-rounded prt-btn-style-fill prt-btn-color-skincolor mr-20">View all solutions</a>
-              <a href="<?= m_path('rfq', [], true) ?>" class="prt-btn prt-btn-size-md prt-btn-shape-rounded prt-btn-style-fill prt-btn-color-transparentcolor">Submit an RFQ</a>
+              <a href="#" class="prt-btn prt-btn-size-md prt-btn-shape-rounded prt-btn-style-fill prt-btn-color-transparentcolor js-open-rfq">Submit an RFQ</a>
             </div>
           </div>
         </div>

@@ -73,7 +73,7 @@
               </div>
 
               <!-- Col 2 : Solutions -->
-              <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 widget-area">
+              <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 widget-area">
                 <div class="widget widget_nav_menu clearfix footer-widget-box">
                   <h3 class="widget-title">Our Solutions</h3>
                   <ul class="menu-footer-link style1">
@@ -103,13 +103,13 @@
               </div>
 
               <!-- Col 4 : Contact -->
-              <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 widget-area footer-widget-box">
+              <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 widget-area footer-widget-box">
                 <div class="footer-contactbox">
                   <div class="prt-about-footer">
                     <h3 class="widget-title">Contact</h3>
-                    <p class="m-0"><?= params('app_address') ?></p>
-                    <p class="m-0 mt-5"><a href="mailto:<?= params('app_email') ?>"><?= params('app_email') ?></a></p>
-                    <p class="m-0 mt-5"><a href="tel:<?= params('app_phone') ?>"><?= params('app_phone') ?></a></p>
+                    <p class="m-0"><i class="ti-location-pin footer-contact-icon" aria-hidden="true"></i><?= params('app_address') ?></p>
+                    <p class="m-0 mt-5"><i class="flaticon-mail footer-contact-icon" aria-hidden="true"></i><a href="mailto:<?= params('app_email') ?>"><?= params('app_email') ?></a></p>
+                    <p class="m-0 mt-5"><i class="flaticon-phone-call footer-contact-icon" aria-hidden="true"></i><a href="tel:<?= params('app_phone') ?>"><?= params('app_phone') ?></a></p>
                   </div>
                 </div>
               </div>

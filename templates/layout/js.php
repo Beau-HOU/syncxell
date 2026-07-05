@@ -96,6 +96,19 @@ $(function () {
     $('.rfq-dropdown').removeClass('open');
     if (!isOpen) $dd.addClass('open');
   });
+  /* ── Contact single-select dropdown ── */
+  $(document).on('click', '.contact-dd .rfq-dd-opt', function (e) {
+    e.stopPropagation();
+    var $dd  = $(this).closest('.rfq-dropdown');
+    var val  = $(this).data('value');
+    var label = $(this).text().trim();
+    $dd.find('.rfq-dd-opt').removeClass('selected');
+    $(this).addClass('selected');
+    $dd.find('.rfq-dropdown-text').text(label).addClass('has-value');
+    $dd.closest('div').find('input[type="hidden"]').val(val);
+    $dd.removeClass('open');
+  });
+
   $(document).on('change', '.rfq-dd-opt input[type="checkbox"]', function () {
     var $dd = $(this).closest('.rfq-dropdown');
     var labels = [];
